@@ -5,14 +5,14 @@
 \documentclass[man]{apa7}
 % Load the settings
 
-
 % === Hier alle Angaben zum Titelblatt ausfüllen ===
-\newcommand{\thesisauthor}{Susi Sorglos}
-\newcommand{\thesistitle}{Sitzt zu hause und föhnt ihr Haar}
-\newcommand{\thesissubtitle}{Schabba du und schabba da}
-\newcommand{\thesisadvisor}{Prof. Dr. Harry Hirsch}
-\newcommand{\thesisinstitute}{Institut für Psychologie}
-\newcommand{\thesisdate}{21.03.1917}
+% Replace the following commands with your actual details:
+\newcommand{\thesisauthor}{Susi Sorglos}  % Your full name
+\newcommand{\thesistitle}{Sitzt zu hause und föhnt ihr Haar}  % Main title of your thesis
+\newcommand{\thesissubtitle}{Schabba du und schabba da}  % Subtitle if applicable
+\newcommand{\thesisadvisor}{Prof. Dr. Harry Hirsch}  % Name of your advisor
+\newcommand{\thesisinstitute}{Institut für Psychologie}  % Institute name
+\newcommand{\thesisdate}{21.03.1917}  % Submission date (use current date)
 
 
 \input{template/apa_template_settings} 
@@ -23,7 +23,7 @@
 % Abstract
 \newpage
 \begin{abstract}
-
+% Summarize your thesis here: purpose, methods, results, conclusions. Keep under 250 words.
 This is the abstract section. Hallo and It provides a summary of the thesis, including the purpose, methods, results, and conclusions. Typically, this section should be no longer than 250 words.
 
 \vspace{2mm}
@@ -34,52 +34,91 @@ This is the abstract section. Hallo and It provides a summary of the thesis, inc
 
 \end{abstract}
 
-% Kurzfassung
+% Kurzfassung (German Summary)
 \newpage
 \section*{Kurzfassung}
+% Provide a German summary of your thesis.
 Dies ist die Kurzfassung der Arbeit. Sie fasst die Ziele, Methoden, Ergebnisse und Schlussfolgerungen zusammen.
 
-% Danksagung
+% Danksagung (Acknowledgments)
 \newpage
 \section*{Danksagung}
+% Thank people who helped you.
 Ich möchte mich bei allen bedanken, die mich während der Erstellung dieser Arbeit unterstützt haben.
 
 % Declaration
 \newpage
 \section*{Eidesstattliche Erklärung}
+% Standard declaration of originality.
 Hiermit erkläre ich, dass ich die vorliegende Arbeit selbstständig und nur mit den angegebenen Hilfsmitteln angefertigt habe.
 
 % Table of Contents
 \newpage
 \tableofcontents
+\listoffigures  % List of figures
+\listoftables   % List of tables
 \newpage
 
 % Chapters
+% Replace the example content below with your actual chapters.
 \newpage
 \section{Introduction}
+% Introduce your topic, provide background, and state your research question.
 The first sentence should reference a fink paper \cite{Fink2021}
 \lipsum[1-4] % Replace with actual content
 
 \section{Literature Review}
+% Review relevant literature.
 \lipsum[5-8]
 
+\subsection{Previous Studies}
+% Discuss key studies here.
+
+\subsection{Gaps in Research}
+% Identify what your thesis addresses.
+
 \section{Methods}
+% Describe your methodology.
 \lipsum[9-12]
 
 \section{Results}
+% Present your findings.
 \lipsum[13-16]
 
+% Example Table
+\begin{table}[H]
+\caption{Sample Table}
+\begin{tabular}{lcc}
+\hline
+Variable & Mean & SD \\
+\hline
+Group A & 10.5 & 2.1 \\
+Group B & 12.3 & 1.8 \\
+\hline
+\end{tabular}
+\end{table}
+
+% Example Figure
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{figures/uni-graz-logo.pdf} % Replace with your figure
+\caption{Sample Figure}
+\end{figure}
+
 \section{Discussion}
+% Discuss implications, limitations, and future directions.
 \lipsum[17-20]
 
 % References
 \newpage
 \section*{References}
+% This will print your bibliography. Ensure bibliography.bib is updated with your references.
 \printbibliography
 
 % Appendices (if any)
 \appendix
 \section{Appendix Title}
+% Add supplementary material here.
 \lipsum[21-23]
 
 \end{document}
