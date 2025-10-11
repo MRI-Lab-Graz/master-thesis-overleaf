@@ -41,3 +41,9 @@ Quick checklist for absolute beginners (do these five things first):
 5. Add one reference to `bibliography.bib`, cite it in the intro with `\cite{...}` and set Biber if the citation doesn't show.
 
 That's it — progress in small, verifiable steps. If an error appears, copy the Overleaf log and search for the top error line; it usually indicates what's wrong.
+
+---
+
+Note for advanced warnings:
+
+- You might see a warning from the `microtype` package that mentions `Unable to apply patch 'footnote'`. This is harmless and can be ignored. If it bothers you, comment out `\usepackage{microtype}` in `template/apa_template_settings.tex`.

@@ -1,0 +1,35 @@
+name: Build LaTeX document
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compile LaTeX (latexmk + biber)
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: thesis.tex
+
+      - name: Upload compiled PDF
+        uses: actions/upload-artifact@v3
+        with:
+          name: thesis-pdf
+          path: thesis.pdf
+
+      - name: Create Overleaf ZIP
+        run: |
+          chmod +x ./scripts/make_overleaf_zip.sh
+          ./scripts/make_overleaf_zip.sh
+
+      - name: Upload Overleaf ZIP
+        uses: actions/upload-artifact@v3
+        with:
+          name: overleaf-zip
+          path: overleaf.zip

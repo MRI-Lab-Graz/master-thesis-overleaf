@@ -49,6 +49,31 @@ Tip: New users should open `START_HERE.md` first — a one-page quickstart with 
 
 For supervisors: ask students to share the Overleaf project link (Menu -> Share) so you can review their draft without exchanging files.
 
+## Continuous Integration and local testing
+
+If you'd like to test builds automatically instead of copying logs from Overleaf, this repository includes a GitHub Actions workflow that compiles `thesis.tex` on every push to `main` and on pull requests. The compiled `thesis.pdf` is attached as a workflow artifact.
+
+For local builds (macOS / Linux) you can use the provided `Makefile`. You need a TeX distribution (TeX Live or MacTeX) with `latexmk` and `biber` installed.
+
+Build locally:
+
+```bash
+make build
+```
+
+Clean auxiliary files:
+
+```bash
+make clean
+```
+
+View CI artifacts:
+
+1. Push a branch or open a PR.
+2. Open the Actions tab on GitHub, select the workflow run, and download the `thesis-pdf` artifact.
+
+This lets you reproduce Overleaf builds locally or get the compiled PDF automatically from GitHub.
+
 ## Example Usage
 
 Here’s a quick example of how to add content:
@@ -103,6 +128,21 @@ Example BibTeX entry:
   - File not found: Ensure file paths are correct (e.g., figures/uni-graz-logo.pdf).
   - Encoding issues: Use UTF-8 encoding for special characters.
 - If stuck, consult Overleaf's help or contact the maintainer.
+
+### Microtype "footnote" warning
+
+You may see a warning like:
+
+```
+Package microtype Warning: Unable to apply patch `footnote' on input line 20.
+```
+
+This is usually harmless: `microtype` tried to patch the footnote code to enable character protrusion inside footnotes but couldn't because `apa7` (or another package) alters the footnote macros. The normal behaviour of your document is not affected.
+
+Options:
+- Ignore the warning (safe).
+- If you prefer to remove it, comment out `\usepackage{microtype}` in `template/apa_template_settings.tex` (this disables micro-typography features).
+- If you'd like, the template maintainer can disable the package for everyone — open an issue or request that change.
 
 ## Contributing
 
