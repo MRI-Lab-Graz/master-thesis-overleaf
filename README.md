@@ -1,64 +1,53 @@
-# OverLeaf Masterthesis Template
+# Overleaf-first APA7 Master Thesis Template
 
-> 🚀 New to LaTeX / Word user? Start here: [START_HERE.md](START_HERE.md) — a one-page quickstart that walks you through the five first steps.
+This repository is designed for Overleaf users (students and supervisors). It provides a small, easy entry point and a single shared source file so students can edit without getting lost in build details.
 
-This repository provides a beginner-friendly LaTeX template for students to create APA-style theses using Overleaf. The template includes all necessary settings and structures to help you get started with academic writing in APA format.
+If you prefer local builds, a Makefile is present for convenience, but Overleaf is the recommended workflow for students.
 
-## Features
+## Quickstart (Overleaf)
 
-- Pre-configured for APA style.
-- Clear and modular structure for adding your content.
-- Example content provided to guide you.
+1. Open https://www.overleaf.com and create a new project → Upload Project.
+2. Upload the repository contents (or the ZIP) to Overleaf.
+3. Open one of the root files (recommended):
 
-## Getting Started
+- `thesis_eng.tex` — English standalone project file (beginner-friendly)
+- `thesis_ger.tex` — German standalone project file (beginner-friendly)
 
-### 1. Clone or Download the Repository
+4. Edit the metadata at the top of the chosen root file (fields marked "CHANGE ME") and then write your chapters below. Beginners: keep edits to the root file only.
+5. Click Recompile. Overleaf will run the required Biber/LaTeX steps automatically.
 
-- Option 1: **Clone the repository**
-  
-  ```bash
-  git clone https://github.com/MRI-Lab-Graz/master-thesis-latex.git
-  ```
+## File layout (what students need)
 
-- Option 2: **Download as ZIP**
-  - Click the green "Code" button at the top of the repository page.
-  - Select "Download ZIP" and extract the files.
+- `thesis_eng.tex` — English standalone thesis file for beginners (edit this directly)
+- `thesis_ger.tex` — German standalone thesis file for beginners (edit this directly)
+- `maintainer/template/thesis_common.tex` — (optional) shared source kept for maintainers
+- `maintainer/template/apa_template_settings.tex` — formatting and APA7 settings (only change if you know LaTeX)
+- `bibliography.bib` — your references
+- `figures/` — images used in the thesis
 
-### 2. Open the Template in Overleaf
+For beginners: edit the root standalone file you opened (`thesis_eng.tex` or `thesis_ger.tex`). Advanced users/maintainers can edit files under `maintainer/template/`.
 
-1. Go to [Overleaf](https://www.overleaf.com).
-2. Create a new project by selecting **Upload Project**.
-3. Upload all the files from this repository to your project.
+Start here: `START_HERE.md` — a very short 5-step guide for Overleaf beginners.
 
-Tip: New users should open `START_HERE.md` first — a one-page quickstart with five simple steps.
+## Compiling on Overleaf
 
-### 3. Start Writing Your Thesis
+- Set the compiler to PDFLaTeX (Overleaf defaults are fine).
+- Overleaf runs Biber automatically when needed; click Recompile after edits.
 
-- Open `thesis.tex` and replace the example content with your own.
+## Local builds (optional)
 
-## File Structure
+If you want to compile locally (for maintainers or advanced users), install a TeX distribution and run the Makefile. This is optional and not required for students.
 
-- **`apa_template_settings.tex`**: Contains all formatting and style settings for APA compliance.
-- **`thesis.tex`**: The main file where you write your thesis content.
-- **BibTeX File (Optional)**: You can add a `.bib` file for managing references.
-
-## How to Compile
-
-1. In Overleaf, set the compiler to **PDFLaTeX** (or XeLaTeX for better Unicode support).
-2. Click **Recompile** to generate the PDF. For references, ensure Biber is run if needed.
-
-For supervisors: ask students to share the Overleaf project link (Menu -> Share) so you can review their draft without exchanging files.
-
-## Continuous Integration and local testing
-
-If you'd like to test builds automatically instead of copying logs from Overleaf, this repository includes a GitHub Actions workflow that compiles `thesis.tex` on every push to `main` and on pull requests. The compiled `thesis.pdf` is attached as a workflow artifact.
-
-For local builds (macOS / Linux) you can use the provided `Makefile`. You need a TeX distribution (TeX Live or MacTeX) with `latexmk` and `biber` installed.
-
-Build locally:
+Build locally (English):
 
 ```bash
-make build
+make build-en
+```
+
+Build locally (German):
+
+```bash
+make build-de
 ```
 
 Clean auxiliary files:
@@ -67,91 +56,21 @@ Clean auxiliary files:
 make clean
 ```
 
-View CI artifacts:
+## Notes for supervisors
 
-1. Push a branch or open a PR.
-2. Open the Actions tab on GitHub, select the workflow run, and download the `thesis-pdf` artifact.
+- Ask students to share their Overleaf project link (Menu → Share) so you can review drafts.
+- Keep template changes to `template/` only. Students should not edit `apa_template_settings.tex` unless necessary.
 
-This lets you reproduce Overleaf builds locally or get the compiled PDF automatically from GitHub.
+## Troubleshooting (short)
 
-## Example Usage
-
-Here’s a quick example of how to add content:
-
-```latex
-\section{Introduction}
-This is where you write your introduction. Make sure to use APA citations, like \cite{Fink2021}.
-
-\subsection{Background}
-Provide necessary background information here.
-```
-
-## Customization Tips
-
-- **Fonts and Spacing:** Adjust in `template/apa_template_settings.tex`.
-- **Adding Figures/Tables:** Use `\begin{figure}` or `\begin{table}` as shown in the template. Captions should be in English for APA, but text can be German.
-- **Sections:** Add new sections with `\section{Your Title}`. Use subsections with `\subsection{}`.
-- **For Overleaf:** Upload all files, including subfolders like `figures/` and `template/`. Use version history to track changes and collaborate with advisors.
-
-## Common Mistakes to Avoid
-
-- **Forgetting to Update Bibliography:** Always add entries to `bibliography.bib` and cite with `\cite{key}`. Run Biber after changes.
-- **File Paths:** Ensure images are in `figures/` and referenced correctly.
-- **Special Characters:** Use UTF-8; babel is set to ngerman for German text.
-- **Compilation Order:** Compile main file first, then run Biber for references, then compile again.
-
-## Adding References
-
-1. Update `bibliography.bib` with your references in BibTeX format. The template already includes some examples.
-2. Cite them in your text using `\cite{key}`.
-3. The bibliography will be automatically generated at the end.
-
-Example BibTeX entry:
-```bibtex
-@article{example2025,
-  author  = {John Doe},
-  title   = {An Example Article},
-  journal = {Journal of Examples},
-  year    = {2025},
-  volume  = {42},
-  pages   = {1--10}
-}
-```
-
-## Troubleshooting
-
-- **Compilation Errors:** Ensure all files are uploaded to Overleaf. Check for missing packages (Overleaf usually has them).
-- **References Not Showing:** Run Biber (set compiler to PDFLaTeX + Biber) or XeLaTeX. Clear auxiliary files if needed.
-- **APA Style Issues:** The template uses APA7, which is up-to-date for the 7th edition.
-- **Common LaTeX Errors:** 
-  - Undefined control sequence: Check for typos in commands.
-  - File not found: Ensure file paths are correct (e.g., figures/uni-graz-logo.pdf).
-  - Encoding issues: Use UTF-8 encoding for special characters.
-- If stuck, consult Overleaf's help or contact the maintainer.
-
-### Microtype "footnote" warning
-
-You may see a warning like:
-
-```
-Package microtype Warning: Unable to apply patch `footnote' on input line 20.
-```
-
-This is usually harmless: `microtype` tried to patch the footnote code to enable character protrusion inside footnotes but couldn't because `apa7` (or another package) alters the footnote macros. The normal behaviour of your document is not affected.
-
-Options:
-- Ignore the warning (safe).
-- If you prefer to remove it, comment out `\usepackage{microtype}` in `template/apa_template_settings.tex` (this disables micro-typography features).
-- If you'd like, the template maintainer can disable the package for everyone — open an issue or request that change.
-
-## Contributing
-
-Contributions are welcome! Feel free to open issues or submit pull requests to improve this template.
+- If references don't appear, check `bibliography.bib` and re-run compilation on Overleaf.
+- If an image is missing, ensure it's in `figures/` and referenced using that path.
+- Cosmetic warnings (microtype or underfull vboxes) are not blocking.
 
 ## Contact
 
-If you have any problems, try to solve them yourself ;-) Or get in contact <karl.koschutnig@uni-graz.at>
+If you need help, contact the maintainer: karl.koschutnig@uni-graz.at
 
-## License
+---
 
-This project is licensed under the [MIT License](LICENSE).
+This README now focuses on Overleaf usage and keeps local-build instructions for advanced users/maintainers.

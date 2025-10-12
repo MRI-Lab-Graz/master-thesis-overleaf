@@ -1,0 +1,86 @@
+% Shared thesis content (common for English and German wrappers)
+% This file is intended to be input by small wrapper files in the repository
+% root: `thesis_eng.tex` and `thesis_ger.tex`.
+
+% Document class must be the very first macro-related command in the
+% resulting compiled document. The wrapper files set \thesislanguage before
+% inputting this file.
+\documentclass[man]{apa7}
+
+% === Here all metadata/title-page entries ===
+% Replace the following commands with your actual details BEFORE the
+% template settings are loaded so they can be used in pdf metadata and the
+% title page.
+\newcommand{\thesisauthor}{Susi Sorglos}  % Your full name
+\newcommand{\thesistitle}{Sitzt zu hause und föhnt ihr Haar}
+\newcommand{\thesissubtitle}{Schabba du und schabba da}
+\newcommand{\thesisadvisor}{Prof. Dr. Harry Hirsch}
+\newcommand{\thesisinstitute}{Institut für Psychologie}
+\newcommand{\thesisdate}{21.03.1917}
+
+% Load language-aware settings and template (uses the metadata above)
+\input{maintainer/template/apa_template_settings}
+
+\begin{document}
+\maketitlepage
+
+% Abstract
+\newpage
+\begin{abstract}
+This is the abstract section. Replace with your own text (max ~250 words).
+\vspace{2mm}
+\noindent\textbf{Keywords:} \textit{Keyword1, Keyword2}
+\vspace{5mm}
+\end{abstract}
+
+% German summary (Kurzfassung) — kept as example
+\newpage
+\section*{Kurzfassung}
+Dies ist die Kurzfassung der Arbeit. Sie fasst die Ziele, Methoden, Ergebnisse und Schlussfolgerungen zusammen.
+
+% Acknowledgments / Danksagung
+\newpage
+\section*{Acknowledgments}
+Thank people who helped you.
+
+% Declaration
+\newpage
+\section*{Declaration}
+I declare that this thesis is my own work.
+
+% Table of Contents
+\newpage
+\tableofcontents
+\listoffigures
+\listoftables
+\newpage
+
+% --- Example chapters (replace with your own content) ---
+\newpage
+\section{Introduction}
+The first sentence should reference a paper \cite{Fink2021}.
+\lipsum[1-4]
+
+\section{Literature Review}
+\lipsum[5-8]
+
+\section{Methods}
+\lipsum[9-12]
+
+\section{Results}
+\lipsum[13-16]
+
+\section{Discussion}
+\lipsum[17-20]
+
+% References
+\newpage
+\section*{References}
+\printbibliography
+
+% Appendices
+\appendix
+\section{Appendix Title}
+\lipsum[21-23]
+
+\end{document}

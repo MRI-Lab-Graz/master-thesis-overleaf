@@ -1,0 +1,185 @@
+% English — standalone thesis file for beginners (Overleaf-friendly)
+% ------------------------------------------------------------------
+% Open this file in Overleaf and press Recompile. Edit the title/author
+% metadata at the top and then write your chapters below.
+% This file is intentionally standalone: it includes the preamble,
+% package settings (APA7 + biblatex), and a short example thesis body.
+% Beginners: edit only the fields marked "CHANGE ME" and the sections
+% below. Leave the package settings alone unless you know LaTeX.
+
+\def\thesislanguage{english} % sets babel + biblatex language mapping
+\documentclass[man]{apa7}
+
+% === Metadata (CHANGE THESE) ===
+% Replace the values below with your details.
+\newcommand{\thesisauthor}{Susi Sorglos}  % Your full name (CHANGE ME)
+\newcommand{\thesistitle}{Sitzt zu hause und föhnt ihr Haar} % (CHANGE ME)
+\newcommand{\thesissubtitle}{Schabba du und schabba da} % optional
+\newcommand{\thesisadvisor}{Prof. Dr. Harry Hirsch} % (CHANGE ME)
+\newcommand{\thesisinstitute}{Institut für Psychologie} % (CHANGE ME)
+\newcommand{\thesisdate}{21.03.1917} % (CHANGE ME)
+
+% ------------------ Preamble / Settings (begin) ------------------
+% Basic packages
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{csquotes}
+\usepackage{ifthen}
+
+% --- Language handling ---
+% Default defined above via \thesislanguage. Do not change the macro name.
+\providecommand{\thesislanguage}{english}
+\ifthenelse{\equal{\thesislanguage}{english}}{%
+	\usepackage[english]{babel}
+}{%
+	\usepackage[ngerman]{babel}
+}
+
+% biblatex (APA) and language mapping
+\usepackage[style=apa,sortcites=true,sorting=nyt,backend=biber]{biblatex}
+\ifthenelse{\equal{\thesislanguage}{english}}{%
+	\DeclareLanguageMapping{american}{american-apa}
+}{%
+	\DeclareLanguageMapping{german}{german-apa}
+}
+\addbibresource{bibliography.bib}
+
+% Micro-typography and PDF metadata
+\usepackage{microtype}
+\usepackage{bookmark}
+\hypersetup{
+	pdftitle={\thesistitle},
+	pdfauthor={\thesisauthor},
+	pdfsubject={\thesissubtitle},
+	pdfkeywords={},
+	pdfcreator={LaTeX with apa7},
+	pdfproducer={pdfTeX}
+}
+
+% Header/footer configuration (keeps things simple)
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\makeatletter
+\@ifundefined{shorttitle}{%
+	\fancyhead[L]{\thesistitle}%
+	\@ifundefined{@shorttitle}{\gdef\@shorttitle{\thesistitle}}{}
+}{%
+	\fancyhead[L]{\shorttitle}%
+}
+\@ifundefined{@shortauthor}{\gdef\@shortauthor{\thesisauthor}}{}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\makeatother
+
+% Document-wide formatting
+\doublespacing
+\usepackage{lipsum}
+
+\newcommand{\thesistype}{Masterarbeit}
+\newcommand{\thesisaffiliation}{zur Erlangung des akademischen Grades „Master of Science"\\
+an der Naturwissenschaftlichen Fakultät\\
+der Karl-Franzens-Universität Graz}
+\newcommand{\thesislogo}{figures/uni-graz-logo.pdf}
+
+% === Simple title page macro ===
+\newcommand{\maketitlepage}{%
+	\begin{titlepage}
+		\centering
+		\vspace*{1cm}
+		\large
+		% If the user forgot to set a macro, show a visible placeholder.
+					extbf{\ifdefined\thesisauthor\thesisauthor\else{Author Name}\fi}
+
+		\vspace{1.5cm}
+		\Large
+					extbf{\ifdefined\thesistitle\thesistitle\else{Title of the thesis}\fi}
+
+		\vspace{0.5cm}
+		\normalsize
+					extbf{\thesissubtitle}
+
+		\vspace{1.5cm}
+		\Large
+					extbf{\thesistype}
+
+		\vspace{0.5cm}
+		\normalsize
+					hesisaffiliation
+
+		\vspace{2.5cm}
+		\includegraphics[width=0.2\textwidth]{\thesislogo}
+
+		\vspace{1.5cm}
+		Begutachter: \thesisadvisor\\
+					hesisinstitute\\
+					hesisdate
+	\end{titlepage}
+}
+% ------------------ Preamble / Settings (end) --------------------
+
+\begin{document}
+\maketitlepage
+
+% === Abstract ===
+\newpage
+\begin{abstract}
+This is the abstract section. Replace with your own text (max ~250 words).
+\vspace{2mm}
+\noindent\textbf{Keywords:} \textit{Keyword1, Keyword2}
+\vspace{5mm}
+\end{abstract}
+
+% Short German summary is kept as an example; remove if you don't need it.
+\newpage
+\section*{Kurzfassung}
+This is an example German Kurzfassung (summary). Replace or delete as needed.
+
+% Acknowledgments
+\newpage
+\section*{Acknowledgments}
+Thank people who helped you.
+
+% Declaration
+\newpage
+\section*{Declaration}
+I declare that this thesis is my own work.
+
+% Table of Contents
+\newpage
+			ableofcontents
+\listoffigures
+\listoftables
+\newpage
+
+% --- Example chapters (replace with your content) ---
+\newpage
+\section{Introduction}
+The first sentence should reference a paper \cite{Fink2021}.
+\lipsum[1-4]
+
+\section{Literature Review}
+\lipsum[5-8]
+
+\section{Methods}
+\lipsum[9-12]
+
+\section{Results}
+\lipsum[13-16]
+
+\section{Discussion}
+\lipsum[17-20]
+
+% References
+\newpage
+\section*{References}
+\printbibliography
+
+% Appendices
+\appendix
+\section{Appendix Title}
+\lipsum[21-23]
+
+\end{document}

@@ -1,25 +1,3 @@
-Welcome — five quick steps to get started on Overleaf
-===============================================
-
-1) Open Overleaf and create a new project → Upload Project.
-
-2) Upload the repository ZIP or all files from this repo.
-
-3) Open the language wrapper in the project root:
-
-- `thesis_enl.tex` — English entry (recommended)
-- `thesis_ger.tex` — German entry
-
-4) Edit `maintainer/template/thesis_common.tex`:
-
-- At the very top you will find title/author/advisor metadata. Replace those with your details.
-- Below that, add your `\chapter{}` / `\section{}` content. Keep your figures in `figures/` and cite using `\cite{}` with keys from `bibliography.bib`.
-
-5) Click Recompile. Overleaf will run the necessary LaTeX + Biber steps. If references do not appear, recompile once more.
-
-If you need help: share your Overleaf project link with your supervisor (Menu → Share).
-
-That’s it — edit `maintainer/template/thesis_common.tex` and the wrappers, leave `maintainer/template/apa_template_settings.tex` alone unless you know LaTeX.
 START HERE — Quick start for Word users (one page)
 
 1) Open Overleaf: https://www.overleaf.com and create a new project.

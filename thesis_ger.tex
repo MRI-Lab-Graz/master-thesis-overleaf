@@ -1,0 +1,168 @@
+% German standalone entry file (simple and Overleaf-friendly)
+% Use this file as the project main on Overleaf.
+% Deutsch — eigenständige Datei für Anfänger (Overleaf-freundlich)
+% ------------------------------------------------------------------
+% Öffnen Sie diese Datei in Overleaf und klicken Sie auf "Recompile".
+% Ersetzen Sie die Metadaten oben (CHANGE ME) und schreiben Sie Ihre
+% Kapitel weiter unten. Diese Datei enthält die Voreinstellungen
+% (APA7 + biblatex). Anfänger: ändern Sie nur die markierten Felder.
+
+\def\thesislanguage{ngerman}
+\documentclass[man]{apa7}
+
+% === Metadaten (CHANGE THESE) ===
+\newcommand{\thesisauthor}{Susi Sorglos}  % Ihr Name (ÄNDERN)
+\newcommand{\thesistitle}{Sitzt zu hause und föhnt ihr Haar} % (ÄNDERN)
+\newcommand{\thesissubtitle}{Schabba du und schabba da} % optional
+\newcommand{\thesisadvisor}{Prof. Dr. Harry Hirsch} % (ÄNDERN)
+\newcommand{\thesisinstitute}{Institut für Psychologie} % (ÄNDERN)
+\newcommand{\thesisdate}{21.03.1917} % (ÄNDERN)
+
+% ------------------ Präambel / Einstellungen (Anfang) -------------
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{csquotes}
+\usepackage{ifthen}
+
+% --- Sprachwahl ---
+\providecommand{\thesislanguage}{ngerman}
+\ifthenelse{\equal{\thesislanguage}{english}}{%
+	\usepackage[english]{babel}
+}{%
+	\usepackage[ngerman]{babel}
+}
+
+% biblatex (APA) und Sprach-Mapping
+\usepackage[style=apa,sortcites=true,sorting=nyt,backend=biber]{biblatex}
+\ifthenelse{\equal{\thesislanguage}{english}}{%
+	\DeclareLanguageMapping{american}{american-apa}
+}{%
+	\DeclareLanguageMapping{german}{german-apa}
+}
+\addbibresource{bibliography.bib}
+
+\usepackage{microtype}
+\usepackage{bookmark}
+\hypersetup{
+	pdftitle={\thesistitle},
+	pdfauthor={\thesisauthor},
+	pdfsubject={\thesissubtitle},
+	pdfkeywords={},
+	pdfcreator={LaTeX with apa7},
+	pdfproducer={pdfTeX}
+}
+
+% Kopf-/Fusszeile
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\makeatletter
+\@ifundefined{shorttitle}{%
+	\fancyhead[L]{\thesistitle}%
+	\@ifundefined{@shorttitle}{\gdef\@shorttitle{\thesistitle}}{}
+}{%
+	\fancyhead[L]{\shorttitle}%
+}
+\@ifundefined{@shortauthor}{\gdef\@shortauthor{\thesisauthor}}{}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\makeatother
+
+\doublespacing
+\usepackage{lipsum}
+
+\newcommand{\thesistype}{Masterarbeit}
+\newcommand{\thesisaffiliation}{zur Erlangung des akademischen Grades „Master of Science"\\
+an der Naturwissenschaftlichen Fakultät\\
+der Karl-Franzens-Universität Graz}
+\newcommand{\thesislogo}{figures/uni-graz-logo.pdf}
+
+\newcommand{\maketitlepage}{%
+	\begin{titlepage}
+		\centering
+		\vspace*{1cm}
+		\large
+				extbf{\ifdefined\thesisauthor\thesisauthor\else{Autor Name}\fi}
+
+		\vspace{1.5cm}
+		\Large
+				extbf{\ifdefined\thesistitle\thesistitle\else{Titel der Arbeit}\fi}
+
+		\vspace{0.5cm}
+		\normalsize
+				extbf{\thesissubtitle}
+
+		\vspace{1.5cm}
+		\Large
+				extbf{\thesistype}
+
+		\vspace{0.5cm}
+		\normalsize
+				hesisaffiliation
+
+		\vspace{2.5cm}
+		\includegraphics[width=0.2\textwidth]{\thesislogo}
+
+		\vspace{1.5cm}
+		Begutachter: \thesisadvisor\\
+				hesisinstitute\\
+				hesisdate
+	\end{titlepage}
+}
+
+\begin{document}
+\maketitlepage
+
+\newpage
+\begin{abstract}
+Kurzfassung: Ersetzen Sie diesen Text durch Ihre Zusammenfassung (max. 250 Wörter).
+\vspace{2mm}
+\noindent\textbf{Schlüsselwörter:} \textit{Schlüsselwort1, Schlüsselwort2}
+\vspace{5mm}
+\end{abstract}
+
+\newpage
+\section*{Kurzfassung (Deutsch)}
+Dies ist eine Beispiel-Kurzfassung. Ersetzen oder löschen Sie sie nach Bedarf.
+
+\newpage
+\section*{Danksagung}
+Dank an alle, die geholfen haben.
+
+\newpage
+\section*{Erklärung}
+Ich erkläre, dass diese Arbeit meine eigene ist.
+
+\newpage
+	ableofcontents
+\listoffigures
+\listoftables
+\newpage
+
+\section{Einleitung}
+Der erste Satz soll eine Arbeit zitieren \cite{Fink2021}.
+\lipsum[1-4]
+
+\section{Literaturüberblick}
+\lipsum[5-8]
+
+\section{Methoden}
+\lipsum[9-12]
+
+\section{Ergebnisse}
+\lipsum[13-16]
+
+\section{Diskussion}
+\lipsum[17-20]
+
+\newpage
+\section*{Literaturverzeichnis}
+\printbibliography
+
+\appendix
+\section{Anhang}
+\lipsum[21-23]
+
+\end{document}

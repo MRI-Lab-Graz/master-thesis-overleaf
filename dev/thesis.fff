@@ -1,0 +1,7 @@
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+[H]
+\centering
+\includegraphics[width=0.5\textwidth]{figures/uni-graz-logo.pdf} % Replace with your figure
+\caption{Sample Figure}
+\end{figure*}

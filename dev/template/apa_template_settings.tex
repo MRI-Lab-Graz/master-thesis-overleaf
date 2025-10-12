@@ -1,31 +1,34 @@
 % apa_template_settings.tex
 % Contains only preamble settings for the thesis
 % \documentclass[man]{apa7}
-% Basic packages
 \usepackage{float}
+% Load packages and configure settings
 \usepackage[utf8]{inputenc}
 \usepackage{setspace}
 \usepackage{graphicx}
 \usepackage{csquotes}
 \usepackage{ifthen}
 
-% --- Language handling ---
-% If the main file (thesis.tex) defines \thesislanguage it will be used.
-% Default to ngerman. Note: do NOT use the primitive \language name.
-\providecommand{\thesislanguage}{ngerman}
-\ifthenelse{\equal{\thesislanguage}{english}}{
+% Language switch: Set to true for English, false for German
+\newboolean{english}
+\setboolean{english}{false} % Change to true for English
+
+\ifthenelse{\boolean{english}}{
   \usepackage[english]{babel}
 }{
   \usepackage[ngerman]{babel}
 }
 
-% biblatex (APA) and language mapping
+% Choose language: 'ngerman' for German, 'english' for English
+\newcommand{\chooselanguage}{ngerman}  % Change to 'english' if needed
+\usepackage[\chooselanguage]{babel}
+
 \usepackage[style=apa,sortcites=true,sorting=nyt,backend=biber]{biblatex}
-\ifthenelse{\equal{\thesislanguage}{english}}{
-  \DeclareLanguageMapping{american}{american-apa}
-}{
+\ifx\chooselanguage\ngerman
   \DeclareLanguageMapping{german}{german-apa}
-}
+\else
+  \DeclareLanguageMapping{american}{american-apa}
+\fi
 \addbibresource{bibliography.bib}
 
 % Improve micro-typography and PDF metadata for beginners
@@ -44,25 +47,9 @@
 % Header settings
 \pagestyle{fancy}
 \fancyhf{} % Clear header and footer
-% Do NOT override class commands (e.g. \shorttitle) which may expect
-% different argument semantics. Instead use them if they exist, otherwise
-% fall back to the full title/author.
-\makeatletter
-% If \shorttitle (usually set by \shorttitle{...}) is undefined, use
-% the full title; otherwise use the existing \shorttitle.
-\@ifundefined{shorttitle}{%
-  \fancyhead[L]{\thesistitle}%
-  % Provide the internal \@shorttitle used by some classes/packages
-  \@ifundefined{@shorttitle}{\gdef\@shorttitle{\thesistitle}}{}
-}{%
-  \fancyhead[L]{\shorttitle}%
-}
-% Also ensure \@shortauthor exists (some title implementations use it)
-\@ifundefined{@shortauthor}{\gdef\@shortauthor{\thesisauthor}}{}
-% Keep page number on the right
-\fancyhead[R]{\thepage}
+\fancyhead[L]{\shorttitle} % Running title on the left
+\fancyhead[R]{\thepage} % Page number on the right
 \renewcommand{\headrulewidth}{0pt} % Remove horizontal bar
-\makeatother
 
 % Document-wide formatting
 \doublespacing
@@ -81,17 +68,13 @@ der Karl-Franzens-Universität Graz}
     \centering
     \vspace*{1cm}
 
-  % Ensure the author/title macros exist; they are defined in the main
-  % document (thesis_common.tex). If the user forgot to set them, provide a
-  % visible placeholder so compilation doesn't stop with an undefined
-  % macro error.
-  	extbf{\ifdefined\thesisauthor\thesisauthor\else{Autor Name}\fi}
+    \textbf{\thesisauthor}
 
     \large
 
     \vspace{1.5cm}
     \Large
-    	extbf{\ifdefined\thesistitle\thesistitle\else{Titel der Arbeit}\fi}
+    \textbf{\thesistitle}
 
     \vspace{0.5cm}
     \normalsize
