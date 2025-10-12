@@ -2,99 +2,50 @@
 % Contains only preamble settings for the thesis
 % \documentclass[man]{apa7}
 \usepackage{float}
-% Load packages and configure settings
+% Dev template (cleaned)
+\usepackage{float}
 \usepackage[utf8]{inputenc}
 \usepackage{setspace}
 \usepackage{graphicx}
 \usepackage{csquotes}
 \usepackage{ifthen}
 
-% Language switch: Set to true for English, false for German
-\newboolean{english}
-\setboolean{english}{false} % Change to true for English
-
-\ifthenelse{\boolean{english}}{
-  \usepackage[english]{babel}
-}{
-  \usepackage[ngerman]{babel}
-}
-
-% Choose language: 'ngerman' for German, 'english' for English
-\newcommand{\chooselanguage}{ngerman}  % Change to 'english' if needed
-\usepackage[\chooselanguage]{babel}
-
-\usepackage[style=apa,sortcites=true,sorting=nyt,backend=biber]{biblatex}
-\ifx\chooselanguage\ngerman
-  \DeclareLanguageMapping{german}{german-apa}
-\else
-  \DeclareLanguageMapping{american}{american-apa}
-\fi
-\addbibresource{bibliography.bib}
-
-% Improve micro-typography and PDF metadata for beginners
-\usepackage{microtype} % better character protrusion and font expansion
-\usepackage{bookmark}  % better PDF bookmarks
-% apa7 already loads hyperref; set options via \hypersetup instead of reloading
-\hypersetup{
-  pdftitle={\thesistitle},
-  pdfauthor={\thesisauthor},
-  pdfsubject={\thesissubtitle},
-  pdfkeywords={},
-  pdfcreator={LaTeX with apa7},
-  pdfproducer={pdfTeX}
-}
-
-% Header settings
-\pagestyle{fancy}
-\fancyhf{} % Clear header and footer
-\fancyhead[L]{\shorttitle} % Running title on the left
-\fancyhead[R]{\thepage} % Page number on the right
-\renewcommand{\headrulewidth}{0pt} % Remove horizontal bar
-
-% Document-wide formatting
-\doublespacing
-\usepackage{lipsum}
-
 \newcommand{\thesistype}{Masterarbeit}
-\newcommand{\thesisaffiliation}{zur Erlangung des akademischen Grades „Master of Science“\\
+\newcommand{\thesisaffiliation}{zur Erlangung des akademischen Grades „Master of Science"\\
 an der Naturwissenschaftlichen Fakultät\\
 der Karl-Franzens-Universität Graz}
 \newcommand{\thesislogo}{figures/uni-graz-logo.pdf}
 
-
-% === Title Page Macro ===
-\newcommand{\maketitlepage}{
+% Simple titlepage for dev copy
+\newcommand{\maketitlepage}{%
   \begin{titlepage}
-    \centering
-    \vspace*{1cm}
-
-    \textbf{\thesisauthor}
-
     \large
+      	extbf{\ifdefined\thesisauthor\thesisauthor\else{Autor Name}\fi}
 
     \vspace{1.5cm}
     \Large
-    \textbf{\thesistitle}
+      	extbf{\ifdefined\thesistitle\thesistitle\else{Titel der Arbeit}\fi}
 
     \vspace{0.5cm}
     \normalsize
-    \textbf{\thesissubtitle}
+      	extbf{\thesissubtitle}
 
     \vspace{1.5cm}
     \Large
-    \textbf{\thesistype}
+      	extbf{\thesistype}
 
     \vspace{0.5cm}
-
     \normalsize
-    \thesisaffiliation
+        	hesisaffiliation
 
     \vspace{2.5cm}
-    \includegraphics[width=0.2\textwidth]{\thesislogo}
+      \includegraphics[width=0.2\textwidth]{\thesislogo}
 
     \vspace{1.5cm}
     Begutachter: \thesisadvisor\\
-    \thesisinstitute\\
-    \thesisdate
+      	hesisinstitute\\
+      	hesisdate
+    	hesisinstitute\\
+    	hesisdate
   \end{titlepage}
 }

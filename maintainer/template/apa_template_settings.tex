@@ -76,42 +76,32 @@ der Karl-Franzens-Universität Graz}
 
 
 % === Title Page Macro ===
-\newcommand{\maketitlepage}{
+\newcommand{\maketitlepage}{%
   \begin{titlepage}
     \centering
     \vspace*{1cm}
-
-  % Ensure the author/title macros exist; they are defined in the main
-  % document (thesis_common.tex). If the user forgot to set them, provide a
-  % visible placeholder so compilation doesn't stop with an undefined
-  % macro error.
+  \large
   	extbf{\ifdefined\thesisauthor\thesisauthor\else{Autor Name}\fi}
 
-    \large
+  \vspace{1.5cm}
+  \Large
+  	extbf{\ifdefined\thesistitle\thesistitle\else{Titel der Arbeit}\fi}
 
-    \vspace{1.5cm}
-    \Large
-    	extbf{\ifdefined\thesistitle\thesistitle\else{Titel der Arbeit}\fi}
+  \vspace{0.5cm}
+  \normalsize
+  	extbf{\thesissubtitle}
 
-    \vspace{0.5cm}
-    \normalsize
-    \textbf{\thesissubtitle}
+  \vspace{1.5cm}
+  \Large
+  	extbf{\thesistype}
 
-    \vspace{1.5cm}
-    \Large
-    \textbf{\thesistype}
+  \vspace{0.5cm}
+  \normalsize
+  	hesisaffiliation
 
-    \vspace{0.5cm}
-
-    \normalsize
-    \thesisaffiliation
-
-    \vspace{2.5cm}
-    \includegraphics[width=0.2\textwidth]{\thesislogo}
-
-    \vspace{1.5cm}
-    Begutachter: \thesisadvisor\\
-    \thesisinstitute\\
-    \thesisdate
+  \vspace{1.5cm}
+  Begutachter: \thesisadvisor\\
+  	hesisinstitute\\
+  	hesisdate
   \end{titlepage}
 }
