@@ -1,76 +1,156 @@
-# Overleaf-first APA7 Master Thesis Template
+# APA7 Master Thesis Template for Overleaf
 
-This repository is designed for Overleaf users (students and supervisors). It provides a small, easy entry point and a single shared source file so students can edit without getting lost in build details.
+**For absolute beginners:** This template makes it easy to write your thesis in LaTeX using Overleaf. Everything you need is in one file — no complicated setup required.
 
-If you prefer local builds, a Makefile is present for convenience, but Overleaf is the recommended workflow for students.
+**📖 New to LaTeX? Start here:** Read `START_HERE.md` for a complete 5-step beginner's guide.
 
-## Quickstart (Overleaf)
+---
 
-1. Open https://www.overleaf.com and create a new project → Upload Project.
-2. Upload the repository contents (or the ZIP) to Overleaf.
-3. Open one of the root files (recommended):
+## Quick Start (3 Steps)
 
-- `thesis_eng.tex` — English standalone project file (beginner-friendly)
-- `thesis_ger.tex` — German standalone project file (beginner-friendly)
+### Step 1: Upload to Overleaf
+1. Go to https://www.overleaf.com
+2. Create a new project → **Upload Project**
+3. Upload this repository as a ZIP
 
-4. Edit the metadata at the top of the chosen root file (fields marked "CHANGE ME") and then write your chapters below. Beginners: keep edits to the root file only.
-5. Click Recompile. Overleaf will run the required Biber/LaTeX steps automatically.
+### Step 2: Choose Your Language
+Open **ONE** of these files:
+- **`thesis_eng.tex`** — Complete standalone English thesis template
+- **`thesis_ger.tex`** — Complete standalone German thesis template
 
-## File layout (what students need)
+### Step 3: Edit and Compile
+1. Edit the metadata at the top (fields marked `% CHANGE ME`)
+2. Replace the example text with your content
+3. Click **Recompile** to generate your PDF
 
-- `thesis_eng.tex` — English standalone thesis file for beginners (edit this directly)
-- `thesis_ger.tex` — German standalone thesis file for beginners (edit this directly)
-- `maintainer/template/thesis_common.tex` — (optional) shared source kept for maintainers
-- `maintainer/template/apa_template_settings.tex` — formatting and APA7 settings (only change if you know LaTeX)
-- `bibliography.bib` — your references
-- `figures/` — images used in the thesis
+**That's it!** Everything you need (preamble, formatting, example content) is in that one file.
 
-For beginners: edit the root standalone file you opened (`thesis_eng.tex` or `thesis_ger.tex`). Advanced users/maintainers can edit files under `maintainer/template/`.
+---
 
-Start here: `START_HERE.md` — a very short 5-step guide for Overleaf beginners.
+## What Files Do I Need to Know About?
 
-## Compiling on Overleaf
+### For Students (Beginners):
+- **`thesis_eng.tex`** or **`thesis_ger.tex`** — Your main file (edit this)
+- **`bibliography.bib`** — Your references (add citations here)
+- **`figures/`** — Put your images here
+- **`START_HERE.md`** — Step-by-step beginner guide (read this first!)
 
-- Set the compiler to PDFLaTeX (Overleaf defaults are fine).
-- Overleaf runs Biber automatically when needed; click Recompile after edits.
+### What to Ignore:
+- `maintainer/` folder — only for template maintainers
+- `template/` folder — only for template maintainers  
+- `Makefile` — only for local builds (not needed on Overleaf)
+- Other `.tex`, `.aux`, `.log` files — build artifacts
 
-## Local builds (optional)
+**Beginners:** Only edit your chosen file (`thesis_eng.tex` or `thesis_ger.tex`) and `bibliography.bib`. Don't touch the package settings in the preamble unless you know LaTeX!
 
-If you want to compile locally (for maintainers or advanced users), install a TeX distribution and run the Makefile. This is optional and not required for students.
+---
 
-Build locally (English):
+## Using Overleaf
 
+### Compiling:
+- Click the green **Recompile** button after making changes
+- Overleaf automatically runs PDFLaTeX + Biber (for references)
+- If references don't appear, click Recompile again (it needs two passes)
+
+### Adding References:
+1. Open `bibliography.bib`
+2. Add your BibTeX entries (export from Zotero, Mendeley, Google Scholar, etc.)
+3. Cite in your text with `\cite{AuthorYear}`
+4. Recompile to see them in the PDF
+
+### Adding Figures:
+1. Upload images to the `figures/` folder
+2. Reference them: `\includegraphics{figures/your-image.png}`
+3. Recompile to see them in the PDF
+
+### Sharing with Your Supervisor:
+- Click **Menu** → **Share** → Send the link to your supervisor
+- They can view and comment on your work
+
+---
+
+## Troubleshooting
+
+### Common Issues:
+
+**References not showing?**
+- Click Recompile twice (Biber needs two passes)
+- Check that your `.bib` file has the correct citation key
+- Make sure you used `\cite{key}` in your text
+
+**Image not appearing?**
+- Check the image is in `figures/` folder
+- Check the filename matches exactly (case-sensitive)
+- Check the file format (PDF, PNG, JPG are supported)
+
+**Compilation error?**
+- Look at the error log (click the error icon)
+- Usually shows which line has the problem
+- Common issue: missing `\` before LaTeX commands
+
+**Seeing warnings (yellow)?**
+- Warnings about `microtype`, `underfull hbox`, `overfull hbox` are cosmetic
+- They don't stop compilation — you can ignore them
+- Only fix if they cause visible problems in your PDF
+
+---
+
+## Local Builds (Optional — Advanced Users Only)
+
+**Students using Overleaf can skip this section entirely.**
+
+If you're a maintainer or advanced user who wants to compile locally:
+
+### Requirements:
+- Full TeX distribution (TeX Live, MiKTeX, or MacTeX)
+- Make utility
+
+### Commands:
+
+Build English version:
 ```bash
 make build-en
 ```
 
-Build locally (German):
-
+Build German version:
 ```bash
 make build-de
 ```
 
 Clean auxiliary files:
-
 ```bash
 make clean
 ```
 
-## Notes for supervisors
+---
 
-- Ask students to share their Overleaf project link (Menu → Share) so you can review drafts.
-- Keep template changes to `template/` only. Students should not edit `apa_template_settings.tex` unless necessary.
+## For Supervisors
 
-## Troubleshooting (short)
-
-- If references don't appear, check `bibliography.bib` and re-run compilation on Overleaf.
-- If an image is missing, ensure it's in `figures/` and referenced using that path.
-- Cosmetic warnings (microtype or underfull vboxes) are not blocking.
-
-## Contact
-
-If you need help, contact the maintainer: karl.koschutnig@uni-graz.at
+- **Reviewing student work:** Ask students to share their Overleaf project (Menu → Share)
+- **Template updates:** Keep changes in `maintainer/template/` — students use the standalone files
+- **Student questions:** Point them to `START_HERE.md` first
 
 ---
 
-This README now focuses on Overleaf usage and keeps local-build instructions for advanced users/maintainers.
+## Template Features
+
+✅ **APA7 formatting** — Follows APA 7th edition style  
+✅ **Automatic references** — BibTeX + Biber with APA style  
+✅ **English & German** — Full language support  
+✅ **Beginner-friendly** — Everything in one file, clear instructions  
+✅ **Overleaf-ready** — Upload and start writing immediately  
+
+---
+
+## Need Help?
+
+1. **First:** Read `START_HERE.md` — complete beginner guide
+2. **Second:** Check the Troubleshooting section above
+3. **Still stuck?** Contact the maintainer: **karl.koschutnig@uni-graz.at**
+
+---
+
+## License & Credits
+
+This template is maintained for students at the University of Graz.  
+Based on the APA7 LaTeX class.

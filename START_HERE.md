@@ -1,71 +1,131 @@
-Welcome — five quick steps to get started on Overleaf
-===============================================
+# START HERE — Quick Guide for Beginners (5 Steps)
 
-1) Open Overleaf and create a new project → Upload Project.
-
-2) Upload the repository ZIP or all files from this repo.
-
-3) Open the language wrapper in the project root:
-
-- `thesis_enl.tex` — English entry (recommended)
-- `thesis_ger.tex` — German entry
-
-4) Edit `maintainer/template/thesis_common.tex`:
-
-- At the very top you will find title/author/advisor metadata. Replace those with your details.
-- Below that, add your `\chapter{}` / `\section{}` content. Keep your figures in `figures/` and cite using `\cite{}` with keys from `bibliography.bib`.
-
-5) Click Recompile. Overleaf will run the necessary LaTeX + Biber steps. If references do not appear, recompile once more.
-
-If you need help: share your Overleaf project link with your supervisor (Menu → Share).
-
-That’s it — edit `maintainer/template/thesis_common.tex` and the wrappers, leave `maintainer/template/apa_template_settings.tex` alone unless you know LaTeX.
-START HERE — Quick start for Word users (one page)
-
-1) Open Overleaf: https://www.overleaf.com and create a new project.
-
-2) Upload this repository (all files and folders). Keep the folder structure.
-
-3) Open `thesis.tex`.
-
-4) Replace the title-page placeholders at the top of `thesis.tex`:
-   - `\thesisauthor` with your full name
-   - `\thesistitle` with your thesis title
-   - `\thesissubtitle` (optional)
-   - `\thesisadvisor` with your advisor's name
-   - `\thesisdate` with your submission date
-
-5) Write content: find the sections (Introduction, Methods, Results, Discussion) and replace the example text. Use `\section{}` and `\subsection{}`.
-
-6) Add figures: upload images into `figures/` and reference them with `\includegraphics{figures/yourfile.pdf}`.
-
-7) Add references:
-   - Edit `bibliography.bib` (or upload your own `.bib`).
-   - Cite with `\cite{key}` (the key is the entry name in the `.bib` file).
-
-8) Compile: Click Recompile in Overleaf. If references don't show, set project to use Biber (Menu -> Settings -> Compiler: "LaTeX (pdfLaTeX) + Biber").
-
-9) Troubleshooting quick checks:
-   - Missing image -> check path `figures/yourfile.ext` and upload the file.
-   - Strange characters (äöü) -> ensure file encoding is UTF-8 (Overleaf default).
-   - Citations not appearing -> run Biber and recompile twice.
-
-10) Ask for help: show the PDF and the Overleaf error log to your supervisor or contact the template maintainer.
+**Welcome!** This guide will help you write your thesis in Overleaf, even if you've never used LaTeX before. Follow these 5 simple steps:
 
 ---
 
-Quick checklist for absolute beginners (do these five things first):
+## Step 1: Upload to Overleaf
 
-1. Open `thesis.tex` and edit the 5 title fields (name, title, subtitle, advisor, date).
-2. Click Recompile — check the PDF opens and the title page updates.
-3. Replace one paragraph in the Introduction with your words; recompile to confirm.
-4. Upload one image to `figures/` and add the example figure; recompile to confirm it appears.
-5. Add one reference to `bibliography.bib`, cite it in the intro with `\cite{...}` and set Biber if the citation doesn't show.
-
-That's it — progress in small, verifiable steps. If an error appears, copy the Overleaf log and search for the top error line; it usually indicates what's wrong.
+1. Go to https://www.overleaf.com and log in (or create a free account)
+2. Click **New Project** → **Upload Project**
+3. Upload this repository as a ZIP file (download it from GitHub first if needed)
+4. Keep all files and folders together — don't change the structure
 
 ---
 
-Note for advanced warnings:
+## Step 2: Choose Your Language
 
-- You might see a warning from the `microtype` package that mentions `Unable to apply patch 'footnote'`. This is harmless and can be ignored. If it bothers you, comment out `\usepackage{microtype}` in `template/apa_template_settings.tex`.
+Open **ONE** of these files in Overleaf (this is your main file — everything is in it):
+
+- **`thesis_eng.tex`** — for writing in English (recommended)
+- **`thesis_ger.tex`** — for writing in German
+
+**Important:** You only work in ONE file. Pick the language you need and ignore the other file.
+
+---
+
+## Step 3: Add Your Personal Information
+
+At the very top of your chosen file (`thesis_eng.tex` or `thesis_ger.tex`), you'll see lines marked with `% (CHANGE ME)`:
+
+```latex
+\newcommand{\thesisauthor}{Susi Sorglos}  % Your full name (CHANGE ME)
+\newcommand{\thesistitle}{...} % (CHANGE ME)
+\newcommand{\thesissubtitle}{...} % optional (CHANGE ME)
+\newcommand{\thesisadvisor}{Prof. Dr. Harry Hirsch} % (CHANGE ME)
+\newcommand{\thesisinstitute}{Institute of Psychology} % (CHANGE ME)
+\newcommand{\thesisdate}{21 March 1917} % (CHANGE ME)
+```
+
+**Replace these with YOUR details:**
+- Your name
+- Your thesis title
+- Your subtitle (optional, can leave empty)
+- Your supervisor's name
+- Your institute name
+- Today's date
+
+Then click **Recompile** (green button) and check that the title page shows your information.
+
+---
+
+## Step 4: Write Your Content
+
+Scroll down in the same file to find the example chapters:
+
+- Introduction
+- Literature Review
+- Methods
+- Results
+- Discussion
+
+**Replace the example text** with your own writing. Keep the structure like this:
+
+```latex
+\section{Introduction}
+Write your introduction here...
+
+\section{Methods}
+Write your methods here...
+```
+
+After each change, click **Recompile** to see your PDF update.
+
+---
+
+## Step 5: Add References and Figures
+
+### Adding References:
+
+1. Open the file `bibliography.bib` in Overleaf
+2. Add your references there (you can export from Zotero, Mendeley, or Google Scholar)
+3. In your text, cite with `\cite{AuthorYear}` — for example: `\cite{Fink2021}`
+4. Recompile — your references will appear automatically
+
+### Adding Figures:
+
+1. Upload your image to the `figures/` folder in Overleaf
+2. Add it in your text like this:
+
+```latex
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/your-image.png}
+\caption{Description of your figure}
+\label{fig:myimage}
+\end{figure}
+```
+
+3. Recompile to see it in the PDF
+
+---
+
+## Quick Troubleshooting
+
+- **References not showing?** Click Recompile twice (Overleaf needs two passes)
+- **Image not appearing?** Check that the file is in `figures/` folder and the filename is correct
+- **Strange error?** Look at the error log (click on the error icon) — usually it tells you which line has a problem
+- **Need help?** Share your Overleaf project with your supervisor: **Menu** → **Share**
+
+---
+
+## Important Tips for Beginners
+
+✅ **Do:**
+- Edit only the ONE file you opened (`thesis_eng.tex` or `thesis_ger.tex`)
+- Save often (Overleaf auto-saves, but check the green "All changes saved" message)
+- Recompile after every change to catch errors early
+- Make small changes and test them
+
+❌ **Don't:**
+- Don't edit the "package settings" section (the top part before `\begin{document}`)
+- Don't delete files from `figures/` or other folders
+- Don't panic if you see warnings (yellow) — only red errors stop compilation
+
+---
+
+## Need More Help?
+
+Contact the template maintainer: **karl.koschutnig@uni-graz.at**
+
+**That's it! You're ready to write your thesis. Good luck! 🎓**

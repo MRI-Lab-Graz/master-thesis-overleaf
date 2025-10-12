@@ -14,10 +14,10 @@
 % Replace the values below with your details.
 \newcommand{\thesisauthor}{Susi Sorglos}  % Your full name (CHANGE ME)
 \newcommand{\thesistitle}{Sitzt zu hause und föhnt ihr Haar} % (CHANGE ME)
-\newcommand{\thesissubtitle}{Schabba du und schabba da} % optional
+\newcommand{\thesissubtitle}{Schabba du and schabba da} % optional (CHANGE ME)
 \newcommand{\thesisadvisor}{Prof. Dr. Harry Hirsch} % (CHANGE ME)
-\newcommand{\thesisinstitute}{Institut für Psychologie} % (CHANGE ME)
-\newcommand{\thesisdate}{21.03.1917} % (CHANGE ME)
+\newcommand{\thesisinstitute}{Institute of Psychology} % (CHANGE ME)
+\newcommand{\thesisdate}{21 March 1917} % (CHANGE ME)
 
 % ------------------ Preamble / Settings (begin) ------------------
 % Basic packages
@@ -32,17 +32,17 @@
 % Default defined above via \thesislanguage. Do not change the macro name.
 \providecommand{\thesislanguage}{english}
 \ifthenelse{\equal{\thesislanguage}{english}}{%
-	\usepackage[english]{babel}
+		\usepackage[english]{babel}
 }{%
-	\usepackage[ngerman]{babel}
+		\usepackage[ngerman]{babel}
 }
 
 % biblatex (APA) and language mapping
 \usepackage[style=apa,sortcites=true,sorting=nyt,backend=biber]{biblatex}
 \ifthenelse{\equal{\thesislanguage}{english}}{%
-	\DeclareLanguageMapping{american}{american-apa}
+		\DeclareLanguageMapping{american}{american-apa}
 }{%
-	\DeclareLanguageMapping{german}{german-apa}
+		\DeclareLanguageMapping{german}{german-apa}
 }
 \addbibresource{bibliography.bib}
 
@@ -50,12 +50,12 @@
 \usepackage{microtype}
 \usepackage{bookmark}
 \hypersetup{
-	pdftitle={\thesistitle},
-	pdfauthor={\thesisauthor},
-	pdfsubject={\thesissubtitle},
-	pdfkeywords={},
-	pdfcreator={LaTeX with apa7},
-	pdfproducer={pdfTeX}
+		pdftitle={\thesistitle},
+		pdfauthor={\thesisauthor},
+		pdfsubject={\thesissubtitle},
+		pdfkeywords={},
+		pdfcreator={LaTeX with apa7},
+		pdfproducer={pdfTeX}
 }
 
 % Header/footer configuration (keeps things simple)
@@ -64,10 +64,10 @@
 \fancyhf{}
 \makeatletter
 \@ifundefined{shorttitle}{%
-	\fancyhead[L]{\thesistitle}%
-	\@ifundefined{@shorttitle}{\gdef\@shorttitle{\thesistitle}}{}
+		\fancyhead[L]{\thesistitle}%
+		\@ifundefined{@shorttitle}{\gdef\@shorttitle{\thesistitle}}{}
 }{%
-	\fancyhead[L]{\shorttitle}%
+		\fancyhead[L]{\shorttitle}%
 }
 \@ifundefined{@shortauthor}{\gdef\@shortauthor{\thesisauthor}}{}
 \fancyhead[R]{\thepage}
@@ -78,45 +78,45 @@
 \doublespacing
 \usepackage{lipsum}
 
-\newcommand{\thesistype}{Masterarbeit}
-\newcommand{\thesisaffiliation}{zur Erlangung des akademischen Grades „Master of Science"\\
-an der Naturwissenschaftlichen Fakultät\\
-der Karl-Franzens-Universität Graz}
+\newcommand{\thesistype}{Master's thesis}
+\newcommand{\thesisaffiliation}{In partial fulfillment of the requirements for the degree of Master of Science\\
+Faculty of Natural Sciences\\
+University of Graz}
 \newcommand{\thesislogo}{figures/uni-graz-logo.pdf}
 
 % === Simple title page macro ===
 \newcommand{\maketitlepage}{%
-	\begin{titlepage}
-		\centering
-		\vspace*{1cm}
-		\large
-		% If the user forgot to set a macro, show a visible placeholder.
-					extbf{\ifdefined\thesisauthor\thesisauthor\else{Author Name}\fi}
+\begin{titlepage}
+\centering
+\vspace*{1cm}
+\large
+	% If the user forgot to set a macro, show a visible placeholder.
+		\textbf{\ifdefined\thesisauthor\thesisauthor\else{Author Name}\fi}
 
-		\vspace{1.5cm}
-		\Large
-					extbf{\ifdefined\thesistitle\thesistitle\else{Title of the thesis}\fi}
+\vspace{1.5cm}
+\Large
+			\textbf{\ifdefined\thesistitle\thesistitle\else{Title of the thesis}\fi}
 
-		\vspace{0.5cm}
-		\normalsize
-					extbf{\thesissubtitle}
+\vspace{0.5cm}
+\normalsize
+			\textbf{\thesissubtitle}
 
-		\vspace{1.5cm}
-		\Large
-					extbf{\thesistype}
+\vspace{1.5cm}
+\Large
+			\textbf{\thesistype}
 
-		\vspace{0.5cm}
-		\normalsize
-					hesisaffiliation
+\vspace{0.5cm}
+\normalsize
+			\thesisaffiliation
 
-		\vspace{2.5cm}
-		\includegraphics[width=0.2\textwidth]{\thesislogo}
+\vspace{2.5cm}
+\includegraphics[width=0.2\textwidth]{\thesislogo}
 
-		\vspace{1.5cm}
-		Begutachter: \thesisadvisor\\
-					hesisinstitute\\
-					hesisdate
-	\end{titlepage}
+\vspace{1.5cm}
+Supervisor: \thesisadvisor\\
+		\thesisinstitute\\
+		\thesisdate
+\end{titlepage}
 }
 % ------------------ Preamble / Settings (end) --------------------
 
@@ -134,8 +134,8 @@ This is the abstract section. Replace with your own text (max ~250 words).
 
 % Short German summary is kept as an example; remove if you don't need it.
 \newpage
-\section*{Kurzfassung}
-This is an example German Kurzfassung (summary). Replace or delete as needed.
+\section*{German summary}
+This is an example German summary (Kurzfassung). Replace or delete as needed.
 
 % Acknowledgments
 \newpage
@@ -149,7 +149,7 @@ I declare that this thesis is my own work.
 
 % Table of Contents
 \newpage
-			ableofcontents
+			\tableofcontents
 \listoffigures
 \listoftables
 \newpage

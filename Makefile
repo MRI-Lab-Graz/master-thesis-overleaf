@@ -2,30 +2,35 @@
 PDF_EN = thesis_eng.pdf
 PDF_DE = thesis_ger.pdf
 
+# Use full paths to TeX binaries (macOS MacTeX location)
+PDFLATEX = /Library/TeX/texbin/pdflatex
+BIBER = /Library/TeX/texbin/biber
+LATEXMK = /Library/TeX/texbin/latexmk
+
 .PHONY: build build-en build-de build-all clean distclean zip
 
 # Default: build English wrapper (keeps backward compatibility with CI/scripts)
 build: build-en
 
 build-en:
-	pdflatex -interaction=nonstopmode -file-line-error thesis_eng.tex
-	biber $(basename thesis_eng.tex)
-	pdflatex -interaction=nonstopmode -file-line-error thesis_eng.tex
-	pdflatex -interaction=nonstopmode -file-line-error thesis_eng.tex
+	$(PDFLATEX) -interaction=nonstopmode -file-line-error thesis_eng.tex
+	$(BIBER) $(basename thesis_eng.tex)
+	$(PDFLATEX) -interaction=nonstopmode -file-line-error thesis_eng.tex
+	$(PDFLATEX) -interaction=nonstopmode -file-line-error thesis_eng.tex
 	# move output to predictable filename
 	@mv -f $(basename thesis_eng.tex).pdf $(PDF_EN) || true
 
 build-de:
-	pdflatex -interaction=nonstopmode -file-line-error thesis_ger.tex
-	biber $(basename thesis_ger.tex)
-	pdflatex -interaction=nonstopmode -file-line-error thesis_ger.tex
-	pdflatex -interaction=nonstopmode -file-line-error thesis_ger.tex
+	$(PDFLATEX) -interaction=nonstopmode -file-line-error thesis_ger.tex
+	$(BIBER) $(basename thesis_ger.tex)
+	$(PDFLATEX) -interaction=nonstopmode -file-line-error thesis_ger.tex
+	$(PDFLATEX) -interaction=nonstopmode -file-line-error thesis_ger.tex
 	@mv -f $(basename thesis_ger.tex).pdf $(PDF_DE) || true
 
 build-all: build-en build-de
 
 clean:
-	latexmk -c
+	$(LATEXMK) -c || rm -f *.aux *.log *.out *.toc *.bbl *.blg *.bcf *.run.xml *.lof *.lot
 
 distclean:
 	rm -f $(PDF_EN) $(PDF_DE)
