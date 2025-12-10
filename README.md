@@ -11,7 +11,7 @@
 ### Step 1: Upload to Overleaf
 1. Go to https://www.overleaf.com
 2. Create a new project → **Upload Project**
-3. Upload this repository as a ZIP
+3. Easiest: upload the prepared `overleaf.zip` (from GitHub Releases) — or zip this repository yourself and upload it.
 
 ### Step 2: Choose Your Language
 Open **ONE** of these files:
@@ -43,6 +43,13 @@ Open **ONE** of these files:
 
 **Beginners:** Only edit your chosen file (`thesis_eng.tex` or `thesis_ger.tex`) and `bibliography.bib`. Don't touch the package settings in the preamble unless you know LaTeX!
 
+### Top 5 quick gotchas (read this!)
+- Recompile twice after adding citations; ensure compiler is "LaTeX (pdfLaTeX) + Biber" if citations stay missing.
+- Image paths are case-sensitive; files must live in `figures/`.
+- Change every field marked `% (CHANGE ME)` at the top of your thesis file before sharing.
+- `microtype` warning about `footnote` is harmless; errors (red) are the ones to fix.
+- Keep all files/folders when zipping for Overleaf; do not rename the `.tex` file you are using.
+
 ---
 
 ## Using Overleaf
@@ -51,6 +58,7 @@ Open **ONE** of these files:
 - Click the green **Recompile** button after making changes
 - Overleaf automatically runs PDFLaTeX + Biber (for references)
 - If references don't appear, click Recompile again (it needs two passes)
+- If citations still do not appear, set **Menu → Settings → Compiler** to "LaTeX (pdfLaTeX) + Biber" and Recompile twice.
 
 ### Adding References:
 1. Open `bibliography.bib`
@@ -77,11 +85,15 @@ Open **ONE** of these files:
 - Click Recompile twice (Biber needs two passes)
 - Check that your `.bib` file has the correct citation key
 - Make sure you used `\cite{key}` in your text
+- Verify compiler is set to "LaTeX (pdfLaTeX) + Biber" in Overleaf settings.
 
 **Image not appearing?**
 - Check the image is in `figures/` folder
 - Check the filename matches exactly (case-sensitive)
 - Check the file format (PDF, PNG, JPG are supported)
+
+**Harmless warning about `microtype`?**
+- Overleaf may show `microtype: Unable to apply patch 'footnote'` — this is safe to ignore. Your PDF still compiles.
 
 **Compilation error?**
 - Look at the error log (click the error icon)

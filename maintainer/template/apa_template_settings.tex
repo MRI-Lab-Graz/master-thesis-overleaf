@@ -1,6 +1,7 @@
 % apa_template_settings.tex
-% Contains only preamble settings for the thesis
+% Maintainer preamble for thesis wrappers (shared settings)
 % \documentclass[man]{apa7}
+
 % Basic packages
 \usepackage{float}
 \usepackage[utf8]{inputenc}
@@ -10,27 +11,26 @@
 \usepackage{ifthen}
 
 % --- Language handling ---
-% If the main file (thesis.tex) defines \thesislanguage it will be used.
-% Default to ngerman. Note: do NOT use the primitive \language name.
+% If the wrapper defines \thesislanguage it will be used; default ngerman.
 \providecommand{\thesislanguage}{ngerman}
-\ifthenelse{\equal{\thesislanguage}{english}}{
+\ifthenelse{\equal{\thesislanguage}{english}}{%
   \usepackage[english]{babel}
-}{
+}{%
   \usepackage[ngerman]{babel}
 }
 
 % biblatex (APA) and language mapping
 \usepackage[style=apa,sortcites=true,sorting=nyt,backend=biber]{biblatex}
-\ifthenelse{\equal{\thesislanguage}{english}}{
+\ifthenelse{\equal{\thesislanguage}{english}}{%
   \DeclareLanguageMapping{american}{american-apa}
-}{
+}{%
   \DeclareLanguageMapping{german}{german-apa}
 }
 \addbibresource{bibliography.bib}
 
-% Improve micro-typography and PDF metadata for beginners
-\usepackage{microtype} % better character protrusion and font expansion
-\usepackage{bookmark}  % better PDF bookmarks
+% Micro-typography and PDF metadata
+\usepackage{microtype}
+\usepackage{bookmark}
 % apa7 already loads hyperref; set options via \hypersetup instead of reloading
 \hypersetup{
   pdftitle={\thesistitle},
@@ -42,26 +42,19 @@
 }
 
 % Header settings
+\usepackage{fancyhdr}
 \pagestyle{fancy}
-\fancyhf{} % Clear header and footer
-% Do NOT override class commands (e.g. \shorttitle) which may expect
-% different argument semantics. Instead use them if they exist, otherwise
-% fall back to the full title/author.
+\fancyhf{}
 \makeatletter
-% If \shorttitle (usually set by \shorttitle{...}) is undefined, use
-% the full title; otherwise use the existing \shorttitle.
 \@ifundefined{shorttitle}{%
   \fancyhead[L]{\thesistitle}%
-  % Provide the internal \@shorttitle used by some classes/packages
   \@ifundefined{@shorttitle}{\gdef\@shorttitle{\thesistitle}}{}
 }{%
   \fancyhead[L]{\shorttitle}%
 }
-% Also ensure \@shortauthor exists (some title implementations use it)
 \@ifundefined{@shortauthor}{\gdef\@shortauthor{\thesisauthor}}{}
-% Keep page number on the right
 \fancyhead[R]{\thepage}
-\renewcommand{\headrulewidth}{0pt} % Remove horizontal bar
+\renewcommand{\headrulewidth}{0pt}
 \makeatother
 
 % Document-wide formatting
@@ -69,39 +62,41 @@
 \usepackage{lipsum}
 
 \newcommand{\thesistype}{Masterarbeit}
-\newcommand{\thesisaffiliation}{zur Erlangung des akademischen Grades „Master of Science“\\
-an der Naturwissenschaftlichen Fakultät\\
-der Karl-Franzens-Universität Graz}
+\newcommand{\thesisaffiliation}{zur Erlangung des akademischen Grades Master of Science\\
+an der Naturwissenschaftlichen Fakultaet\\
+der Karl-Franzens-Universitaet Graz}
 \newcommand{\thesislogo}{figures/uni-graz-logo.pdf}
-
 
 % === Title Page Macro ===
 \newcommand{\maketitlepage}{%
   \begin{titlepage}
     \centering
     \vspace*{1cm}
-  \large
-  	extbf{\ifdefined\thesisauthor\thesisauthor\else{Autor Name}\fi}
+    \large
+    	extbf{\ifdefined\thesisauthor\thesisauthor\else Author Name\fi}
 
-  \vspace{1.5cm}
-  \Large
-  	extbf{\ifdefined\thesistitle\thesistitle\else{Titel der Arbeit}\fi}
+    \vspace{1.5cm}
+    \Large
+    	extbf{\ifdefined\thesistitle\thesistitle\else Title of the thesis\fi}
 
-  \vspace{0.5cm}
-  \normalsize
-  	extbf{\thesissubtitle}
+    \vspace{0.5cm}
+    \normalsize
+    	extbf{\thesissubtitle}
 
-  \vspace{1.5cm}
-  \Large
-  	extbf{\thesistype}
+    \vspace{1.5cm}
+    \Large
+    	extbf{\thesistype}
 
-  \vspace{0.5cm}
-  \normalsize
-  	hesisaffiliation
+    \vspace{0.5cm}
+    \normalsize
+    	hesisaffiliation
 
-  \vspace{1.5cm}
-  Begutachter: \thesisadvisor\\
-  	hesisinstitute\\
-  	hesisdate
+    \vspace{2cm}
+    \includegraphics[width=0.2\textwidth]{\thesislogo}
+
+    \vspace{1.5cm}
+    Begutachter: \thesisadvisor\\
+    	hesisinstitute\\
+    	hesisdate
   \end{titlepage}
 }

@@ -2,6 +2,7 @@
 *.aux
 *.bbl
 *.blg
+*.bcf
 *.fdb_latexmk
 *.fls
 *.log
@@ -10,20 +11,19 @@
 *.toc
 *.lof
 *.lot
-*.bcf
 *.run.xml
 *.nav
 *.snm
-.DS_Store
 *.vrb
 *.idx
 *.ilg
 *.ind
 *.brf
 
-# Overleaf / build outputs
-*.xdv
+# Build / distribution outputs
 *.pdf
+*.xdv
+overleaf.zip
 
 # Editor / OS temporary files
 *~
@@ -32,22 +32,4 @@
 # Python virtualenvs (if any)
 venv/
 env/
-# LaTeX auxiliary files
-*.aux
-*.bbl
-*.blg
-*.fdb_latexmk
-*.fls
-*.log
-*.out
-*.synctex.gz
-*.toc
-*.lof
-*.lot
-*.bcf
-*.run.xml
-
-# Overleaf specific
-*.xdv
-*.pdf
 

@@ -8,7 +8,7 @@
 
 1. Go to https://www.overleaf.com and log in (or create a free account)
 2. Click **New Project** → **Upload Project**
-3. Upload this repository as a ZIP file (download it from GitHub first if needed)
+3. Upload the prepared `overleaf.zip` (from GitHub Releases) — or download this repository and upload it as a ZIP
 4. Keep all files and folders together — don't change the structure
 
 ---
@@ -102,8 +102,9 @@ After each change, click **Recompile** to see your PDF update.
 
 ## Quick Troubleshooting
 
-- **References not showing?** Click Recompile twice (Overleaf needs two passes)
+- **References not showing?** Click Recompile twice (Overleaf needs two passes); if still missing, set **Menu → Settings → Compiler** to "LaTeX (pdfLaTeX) + Biber" and Recompile again.
 - **Image not appearing?** Check that the file is in `figures/` folder and the filename is correct
+- **Harmless warning about `microtype`?** A message like `Unable to apply patch 'footnote'` is safe to ignore; your PDF will still compile.
 - **Strange error?** Look at the error log (click on the error icon) — usually it tells you which line has a problem
 - **Need help?** Share your Overleaf project with your supervisor: **Menu** → **Share**
 
