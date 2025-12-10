@@ -1,0 +1,39 @@
+% Title page layout (English) — do not edit in student projects
+\newcommand{\thesistype}{Master's thesis}
+\newcommand{\thesisaffiliation}{In partial fulfillment of the requirements for the degree of Master of Science\\
+Faculty of Natural Sciences\\
+University of Graz}
+\newcommand{\thesislogo}{figures/uni-graz-logo.pdf}
+
+\newcommand{\maketitlepage}{%
+\begin{titlepage}
+\centering
+\vspace*{1cm}
+\large
+  \textbf{\ifdefined\thesisauthor\thesisauthor\else Author Name\fi}
+
+\vspace{1.5cm}
+\Large
+  \textbf{\ifdefined\thesistitle\thesistitle\else Title of the thesis\fi}
+
+\vspace{0.5cm}
+\normalsize
+  \textbf{\thesissubtitle}
+
+\vspace{1.5cm}
+\Large
+  \textbf{\thesistype}
+
+\vspace{0.5cm}
+\normalsize
+  \thesisaffiliation
+
+\vspace{2.5cm}
+\includegraphics[width=0.2\textwidth]{\thesislogo}
+
+\vspace{1.5cm}
+Supervisor: \thesisadvisor\\
+\thesisinstitute\\
+\thesisdate
+\end{titlepage}
+}

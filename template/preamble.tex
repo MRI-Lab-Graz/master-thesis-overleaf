@@ -1,0 +1,60 @@
+% Shared preamble for student-facing thesis files
+% Expected macros defined before input: \thesislanguage, \thesistitle, \thesisauthor, \thesissubtitle
+
+% Basic packages
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{csquotes}
+\usepackage{ifthen}
+
+% --- Language handling ---
+\providecommand{\thesislanguage}{english}
+\ifthenelse{\equal{\thesislanguage}{english}}{%
+  \usepackage[english]{babel}%
+}{%
+  \usepackage[ngerman]{babel}%
+}
+
+% biblatex (APA) and language mapping
+\usepackage[style=apa,sortcites=true,sorting=nyt,backend=biber]{biblatex}
+\ifthenelse{\equal{\thesislanguage}{english}}{%
+  \DeclareLanguageMapping{american}{american-apa}%
+}{%
+  \DeclareLanguageMapping{german}{german-apa}%
+}
+\addbibresource{bibliography.bib}
+
+% Micro-typography and PDF metadata
+\usepackage{microtype}
+\usepackage{bookmark}
+\hypersetup{
+  pdftitle={\thesistitle},
+  pdfauthor={\thesisauthor},
+  pdfsubject={\thesissubtitle},
+  pdfkeywords={},
+  pdfcreator={LaTeX with apa7},
+  pdfproducer={pdfTeX}
+}
+
+% Header/footer configuration
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt} % avoid clipping text into the header
+\pagestyle{fancy}
+\fancyhf{}
+\makeatletter
+\@ifundefined{shorttitle}{%
+  \fancyhead[L]{\thesistitle}%
+  \@ifundefined{@shorttitle}{\gdef\@shorttitle{\thesistitle}}{}
+}{%
+  \fancyhead[L]{\shorttitle}%
+}
+\@ifundefined{@shortauthor}{\gdef\@shortauthor{\thesisauthor}}{}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\makeatother
+
+% Document-wide formatting
+\doublespacing
+\usepackage{lipsum}

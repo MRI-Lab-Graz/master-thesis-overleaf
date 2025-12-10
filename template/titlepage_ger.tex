@@ -1,0 +1,39 @@
+% Titelblatt-Layout (Deutsch) — nicht im Studierendenprojekt bearbeiten
+\newcommand{\thesistype}{Masterarbeit}
+\newcommand{\thesisaffiliation}{zur Erlangung des akademischen Grades „Master of Science"\\
+an der Naturwissenschaftlichen Fakultät\\
+der Karl-Franzens-Universität Graz}
+\newcommand{\thesislogo}{figures/uni-graz-logo.pdf}
+
+\newcommand{\maketitlepage}{%
+\begin{titlepage}
+\centering
+\vspace*{1cm}
+\large
+  \textbf{\ifdefined\thesisauthor\thesisauthor\else Autor Name\fi}
+
+\vspace{1.5cm}
+\Large
+  \textbf{\ifdefined\thesistitle\thesistitle\else Titel der Arbeit\fi}
+
+\vspace{0.5cm}
+\normalsize
+  \textbf{\thesissubtitle}
+
+\vspace{1.5cm}
+\Large
+  \textbf{\thesistype}
+
+\vspace{0.5cm}
+\normalsize
+  \thesisaffiliation
+
+\vspace{2.5cm}
+\includegraphics[width=0.2\textwidth]{\thesislogo}
+
+\vspace{1.5cm}
+Begutachter: \thesisadvisor\\
+\thesisinstitute\\
+\thesisdate
+\end{titlepage}
+}

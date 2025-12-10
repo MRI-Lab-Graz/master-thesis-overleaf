@@ -20,104 +20,11 @@
 \newcommand{\thesisdate}{21.03.1917} % (CHANGE ME)
 
 % ------------------ Preamble / Settings (begin) ------------------
-% Basic packages
-\usepackage{float}
-\usepackage[utf8]{inputenc}
-\usepackage{setspace}
-\usepackage{graphicx}
-\usepackage{csquotes}
-\usepackage{ifthen}
-
-% --- Language handling ---
-% Default defined above via \thesislanguage. Do not change the macro name.
-\providecommand{\thesislanguage}{ngerman}
-\ifthenelse{\equal{\thesislanguage}{english}}{%
-	\usepackage[english]{babel}
-}{%
-	\usepackage[ngerman]{babel}
-}
-
-% biblatex (APA) and language mapping
-\usepackage[style=apa,sortcites=true,sorting=nyt,backend=biber]{biblatex}
-\ifthenelse{\equal{\thesislanguage}{english}}{%
-	\DeclareLanguageMapping{american}{american-apa}
-}{%
-	\DeclareLanguageMapping{german}{german-apa}
-}
-\addbibresource{bibliography.bib}
-
-% Micro-typography and PDF metadata
-\usepackage{microtype}
-\usepackage{bookmark}
-\hypersetup{
-	pdftitle={\thesistitle},
-	pdfauthor={\thesisauthor},
-	pdfsubject={\thesissubtitle},
-	pdfkeywords={},
-	pdfcreator={LaTeX with apa7},
-	pdfproducer={pdfTeX}
-}
-
-% Header/footer configuration (keeps things simple)
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
-\makeatletter
-\@ifundefined{shorttitle}{%
-	\fancyhead[L]{\thesistitle}%
-	\@ifundefined{@shorttitle}{\gdef\@shorttitle{\thesistitle}}{}
-}{%
-	\fancyhead[L]{\shorttitle}%
-}
-\@ifundefined{@shortauthor}{\gdef\@shortauthor{\thesisauthor}}{}
-\fancyhead[R]{\thepage}
-\renewcommand{\headrulewidth}{0pt}
-\makeatother
-
-% Document-wide formatting
-\doublespacing
-\usepackage{lipsum}
-
-\newcommand{\thesistype}{Masterarbeit}
-\newcommand{\thesisaffiliation}{zur Erlangung des akademischen Grades „Master of Science"\\
-an der Naturwissenschaftlichen Fakultät\\
-der Karl-Franzens-Universität Graz}
-\newcommand{\thesislogo}{figures/uni-graz-logo.pdf}
-
-% === Simple title page macro ===
-\newcommand{\maketitlepage}{%
-\begin{titlepage}
-\centering
-\vspace*{1cm}
-\large
-% If the user forgot to set a macro, show a visible placeholder.
-	\textbf{\ifdefined\thesisauthor\thesisauthor\else{Autor Name}\fi}
-
-\vspace{1.5cm}
-\Large
-	\textbf{\ifdefined\thesistitle\thesistitle\else{Titel der Arbeit}\fi}
-
-\vspace{0.5cm}
-\normalsize
-	\textbf{\thesissubtitle}
-
-\vspace{1.5cm}
-\Large
-	\textbf{\thesistype}
-
-\vspace{0.5cm}
-\normalsize
-	\thesisaffiliation
-
-\vspace{2.5cm}
-\includegraphics[width=0.2\textwidth]{\thesislogo}
-
-\vspace{1.5cm}
-Begutachter: \thesisadvisor\\
-	\thesisinstitute\\
-	\thesisdate
-\end{titlepage}
-}
+% The preamble is kept in a separate file to reduce clutter for students.
+% Do not edit `template/preamble.tex` unless you know LaTeX.
+\input{template/preamble}
+% Titelblatt ist vorgegeben; nicht im Studierendenprojekt bearbeiten.
+\input{template/titlepage_ger}
 % ------------------ Preamble / Settings (end) --------------------
 
 \begin{document}
@@ -125,7 +32,7 @@ Begutachter: \thesisadvisor\\
 
 % === Abstract ===
 \newpage
-\begin{abstract}
+\begin{abstract}\noindent
 Dies ist die Kurzfassung. Ersetzen Sie diesen Text durch Ihre Zusammenfassung (max. 250 Wörter).
 \vspace{2mm}
 \noindent\textbf{Keywords:} \textit{Keyword1, Keyword2}
@@ -160,10 +67,11 @@ Ich erkläre, dass diese Arbeit meine eigene ist.
 Der erste Satz soll eine Arbeit zitieren \cite{Fink2021}.
 \lipsum[1-4]
 
-\section{Literaturüberblick}
+% Optional: Ein eigener Literaturüberblick ist nach APA nicht zwingend; Sie können ihn in die Einleitung integrieren.
+\section{Hintergrund (optional)}
 \lipsum[5-8]
 
-\section{Methoden}
+\section{Methode}
 \lipsum[9-12]
 
 \section{Ergebnisse}
