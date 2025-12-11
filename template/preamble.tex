@@ -11,10 +11,22 @@
 
 % --- Language handling ---
 \providecommand{\thesislanguage}{english}
+\usepackage{caption} % Required for caption customization
+
 \ifthenelse{\equal{\thesislanguage}{english}}{%
   \usepackage[english]{babel}%
 }{%
   \usepackage[ngerman]{babel}%
+  % Force German caption names via babel's caption hook
+  \addto\captionsngerman{%
+      \renewcommand{\figurename}{Abbildung}%
+      \renewcommand{\tablename}{Tabelle}%
+      \renewcommand{\listfigurename}{Abbildungsverzeichnis}%
+      \renewcommand{\listtablename}{Tabellenverzeichnis}%
+  }%
+  % Ensure caption package also uses these names (overriding any apa7 defaults)
+  \captionsetup[table]{name=Tabelle}%
+  \captionsetup[figure]{name=Abbildung}%
 }
 
 % biblatex (APA) and language mapping
@@ -22,7 +34,7 @@
 \ifthenelse{\equal{\thesislanguage}{english}}{%
   \DeclareLanguageMapping{american}{american-apa}%
 }{%
-  \DeclareLanguageMapping{german}{german-apa}%
+  \DeclareLanguageMapping{ngerman}{ngerman-apa}%
 }
 \addbibresource{bibliography.bib}
 

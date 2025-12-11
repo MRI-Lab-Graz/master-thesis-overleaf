@@ -9,14 +9,25 @@
 % - floatsintext: makes it so tables and figures will appear in text rather than at the end. Unforunately, not having this option set breaks the whole document, and I haven't been able to figure out why. IT's GREAT WHEN THINGS WORK LIKE THEY'RE SUPPOSED TO.
 \usepackage{booktabs}
 \usepackage{multirow}
-\usepackage[ngerman,american]{babel}
-%\usepackage[american]{babel} %english ony
+\usepackage[ngerman]{babel}
+%\usepackage[american]{babel} % english only (use in bachelor_eng.tex)
 \usepackage{csquotes} 
 \usepackage[style=apa,sortcites=true,sorting=nyt,backend=biber]{biblatex}
 % biblatex: loads the package that will handle the bibliographic info.
 % - style=apa: sets the reference format to use apa (albeit the 6th edition)
-%\DeclareLanguageMapping{american}{american-apa} %english ony
 \DeclareLanguageMapping{ngerman}{ngerman-apa}
+
+% Force German caption names via babel's caption hook
+\addto\captionsngerman{%
+    \renewcommand{\figurename}{Abbildung}%
+    \renewcommand{\tablename}{Tabelle}%
+    \renewcommand{\listfigurename}{Abbildungsverzeichnis}%
+    \renewcommand{\listtablename}{Tabellenverzeichnis}%
+}
+% Ensure caption package also uses these names (overriding any apa7 defaults)
+\usepackage{caption}
+\captionsetup[table]{name=Tabelle}
+\captionsetup[figure]{name=Abbildung}
 % Koschutnig: Hier wird Ihre Bibliographie definiert!
 \addbibresource{bibliography.bib} 
 \usepackage[T1]{fontenc} 
@@ -39,6 +50,10 @@
 % ----------------------------------------------------------------
 % End of USER EDITABLE METADATA
 % ==============================================================
+
+% Document language: fixed to German for this template.
+\selectlanguage{ngerman}
+
 
 \title{Bachelorarbeit: \thesisTitle} % The big, long version of the title for the title page
 \shorttitle{\shortTitle} % The short title for the header (defined in preamble)
@@ -118,7 +133,7 @@ Talk about the people who participated in your study. How many students, sourced
 
 \begin{table}[ht]
 \centering
-\caption*{\textbf{Table 1} \\ \textit{Demographics of Participants Included in the Study}}
+\caption{Demographics of Participants Included in the Study}
 \begin{tabular}{lcccccc}
 \toprule
 \multirow{2}{*}{Participant ID} & \multirow{2}{*}{Age} & \multirow{2}{*}{Sex} & \multicolumn{2}{c}{ADS Score} \\
