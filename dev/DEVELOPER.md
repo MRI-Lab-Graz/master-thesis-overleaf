@@ -32,7 +32,9 @@ make zip
 CI/Repository
 -------------
 - The GitHub Actions workflow compiles both public thesis entry points: `thesis_eng.tex` and `thesis_ger.tex`.
-- The workflow uploads both generated PDFs and `overleaf.zip` as artifacts.
+- Push and pull request runs upload both generated PDFs and `overleaf.zip` as workflow artifacts.
+- Published GitHub Releases receive `overleaf.zip`, `thesis_eng.pdf`, and `thesis_ger.pdf` as release assets.
+- The release-assets workflow also supports manual runs for an existing tag when you need to backfill or replace release assets.
 
 Troubleshooting
 ---------------

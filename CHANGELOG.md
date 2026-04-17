@@ -2,6 +2,15 @@
 
 All notable changes to this repository will be documented in this file.
 
+## v1.2.3 - 2026-04-17
+
+- Release automation:
+  - Added a release workflow that attaches `overleaf.zip`, `thesis_eng.pdf`, and `thesis_ger.pdf` to published GitHub Releases.
+  - Kept push/pull-request workflow artifacts for CI debugging and verification.
+  - Added manual tag-based reruns for repairing assets on an existing release.
+  - Updated documentation to distinguish release assets from workflow artifacts.
+  - Removed a stale duplicate developer ZIP script and fixed public README linking.
+
 ## v1.2.2 - 2026-04-17
 
 - Final public cleanup:
