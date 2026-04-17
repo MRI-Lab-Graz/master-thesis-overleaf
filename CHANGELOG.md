@@ -2,6 +2,12 @@
 
 All notable changes to this repository will be documented in this file.
 
+## v1.2.2 - 2026-04-17
+
+- Final public cleanup:
+  - Rewrote the README around the actual student workflow and maintainer workflow.
+  - Removed dead legacy template files that were no longer referenced anywhere.
+
 ## v1.2.1 - 2026-04-17
 
 - Public release readiness improvements:
