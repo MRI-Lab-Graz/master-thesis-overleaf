@@ -2,7 +2,7 @@ START HERE — Quick start for Word users (one page)
 
 1) Open Overleaf: https://www.overleaf.com and create a new project.
 
-2) Upload this repository (all files and folders) or the prepared `overleaf.zip`. Keep the folder structure.
+2) Upload the prepared `overleaf.zip` from GitHub Releases. Only upload the full repository if you are maintaining the template itself.
 
 3) Open **one** file: `thesis_eng.tex` (English) **or** `thesis_ger.tex` (German).
 
@@ -31,6 +31,8 @@ START HERE — Quick start for Word users (one page)
 
 10) Ask for help: show the PDF and the Overleaf error log to your supervisor or contact the template maintainer.
 
+Student note: the public Overleaf package only contains the thesis templates. The `bachelor_*.tex` files in the repository are legacy examples and are intentionally left out of the release ZIP.
+
 ---
 
 Quick checklist for absolute beginners (do these five things first):
@@ -38,7 +40,7 @@ Quick checklist for absolute beginners (do these five things first):
 1. Open `thesis_eng.tex` or `thesis_ger.tex` and edit the 5 title fields (name, title, subtitle, advisor, date).
 2. Click Recompile — check the PDF opens and the title page updates.
 3. Replace one paragraph in the Introduction with your words; recompile to confirm.
-4. Upload one image to `figures/` and add the example figure; recompile to confirm it appears.
+4. Upload one image to `figures/` and add it with `\includegraphics{figures/yourfile.ext}`; recompile to confirm it appears.
 5. Add one reference to `bibliography.bib`, cite it in the intro with `\cite{...}` and set compiler to "LaTeX (pdfLaTeX) + Biber" if the citation doesn't show.
 
 That's it — progress in small, verifiable steps. If an error appears, copy the Overleaf log and search for the top error line; it usually indicates what's wrong.
@@ -47,4 +49,4 @@ That's it — progress in small, verifiable steps. If an error appears, copy the
 
 Note for advanced warnings:
 
-- You might see a warning from the `microtype` package that mentions `Unable to apply patch 'footnote'`. This is harmless and can be ignored. If it bothers you, comment out `\usepackage{microtype}` in `template/apa_template_settings.tex`.
+- You might see a warning from the `microtype` package that mentions `Unable to apply patch 'footnote'`. This is harmless and can be ignored. If it bothers you, comment out `\usepackage{microtype}` in `template/preamble.tex`.

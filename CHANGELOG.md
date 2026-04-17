@@ -2,6 +2,15 @@
 
 All notable changes to this repository will be documented in this file.
 
+## v1.2.1 - 2026-04-17
+
+- Public release readiness improvements:
+  - Added a repository license.
+  - Activated and updated GitHub Actions to build `thesis_eng.tex` and `thesis_ger.tex`.
+  - Made the local `Makefile` portable by relying on TeX tools from `PATH`.
+  - Cleaned up student and maintainer documentation to remove stale `thesis.tex` references.
+  - Reduced the Overleaf ZIP to the public thesis entry points and required assets only.
+
 ## v1.2.0 - 2025-12-11
 
 - Add full bilingual template support:

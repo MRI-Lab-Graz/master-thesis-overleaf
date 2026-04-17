@@ -1,9 +1,12 @@
 # APA7 Thesis Template (Overleaf)
 
-This is the simplest possible way to write your thesis in Overleaf using APA7. Edit one file, press Recompile, done.
+This repository is set up for one simple student workflow: upload the prepared Overleaf package, open one file, and write.
+
+The public student entry points are `thesis_eng.tex` and `thesis_ger.tex`.
+The `bachelor_*.tex` files are legacy examples for maintainers and are not included in `overleaf.zip`.
 
 ## 60-second setup
-- Download `overleaf.zip` from GitHub Releases (or zip this repo).
+- Download `overleaf.zip` from GitHub Releases.
 - In Overleaf: New Project → Upload Project → select the zip.
 - Open exactly one file: `thesis_eng.tex` (English) **or** `thesis_ger.tex` (German).
 - Change the fields marked `% (CHANGE ME)` at the top (name, title, supervisor, date).
@@ -23,7 +26,7 @@ This is the simplest possible way to write your thesis in Overleaf using APA7. E
 
 ## What to edit vs. ignore
 - Edit: `thesis_eng.tex` or `thesis_ger.tex`, plus `bibliography.bib`, and your files in `figures/`.
-- Ignore: `template/`, `maintainer/`, `Makefile`, and any `.aux/.log/.toc` build artifacts.
+- Ignore: `template/`, `maintainer/`, `dev/`, `Makefile`, `bachelor_*.tex`, and any `.aux/.log/.toc` build artifacts.
 
 ## Slightly more detail (when you have 5 minutes)
 1) **Metadata first:** Fill all `% (CHANGE ME)` fields before writing chapters.
@@ -33,10 +36,14 @@ This is the simplest possible way to write your thesis in Overleaf using APA7. E
 5) **Backups/ZIPs:** If you re-zip for Overleaf, keep the folder structure untouched.
 
 ## Advanced (optional, local build)
-Requires TeX Live/MacTeX + `make`:
+Requires TeX Live or MacTeX with `pdflatex`, `biber`, `latexmk`, and `make` on your `PATH`:
 - `make build-en` — build English PDF
 - `make build-de` — build German PDF
+- `make build-all` — build both thesis PDFs
 - `make clean` — remove aux files
+
+## License
+Repository source files are released under the MIT License. Institutional logos and bundled third-party materials may be subject to their own terms.
 
 ## Contact
 Maintainer: karl.koschutnig@uni-graz.at

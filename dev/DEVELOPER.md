@@ -15,10 +15,10 @@ Local quick test
 1. Build locally:
 
 ```bash
-make build
+make build-all
 ```
 
-2. Inspect `thesis.pdf` in the repository root.
+2. Inspect `thesis_eng.pdf` and `thesis_ger.pdf` in the repository root.
 
 3. Produce Overleaf ZIP:
 
@@ -31,14 +31,14 @@ make zip
 
 CI/Repository
 -------------
-- The GitHub Actions workflow already compiles `thesis.tex` and uploads `thesis.pdf` as an artifact.
-- The workflow now also uploads `overleaf.zip` so you can download the exact package produced by the repository.
+- The GitHub Actions workflow compiles both public thesis entry points: `thesis_eng.tex` and `thesis_ger.tex`.
+- The workflow uploads both generated PDFs and `overleaf.zip` as artifacts.
 
 Troubleshooting
 ---------------
-- If CI fails, open the Actions run and inspect the log files (the latex-action step prints a full LaTeX log).
-- Fix issues locally with `make build` and repeat until the PDF compiles cleanly.
+- If CI fails, open the Actions run and inspect the log files from the LaTeX build step.
+- Fix issues locally with `make build-all` and repeat until both PDFs compile cleanly.
 
 Notes
 -----
-Keep the Overleaf ZIP minimal: only include source files (`thesis.tex`, `template/`, `figures/`, `bibliography.bib`, `START_HERE.md`) so students get a clean starting project.
+Keep the Overleaf ZIP minimal: only include the public student sources (`thesis_eng.tex`, `thesis_ger.tex`, `template/`, `figures/`, `bibliography.bib`, `README.md`, `LICENSE`) so students get a clean starting project.

@@ -1,4 +1,4 @@
-name: Build LaTeX document
+name: Build LaTeX documents
 
 on:
   push:
@@ -12,16 +12,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Compile LaTeX (latexmk + biber)
-        uses: xu-cheng/latex-action@v2
+      - name: Compile public thesis templates
+        uses: xu-cheng/latex-action@v3
         with:
-          root_file: thesis.tex
+          root_file: thesis_eng.tex, thesis_ger.tex
 
-      - name: Upload compiled PDF
-        uses: actions/upload-artifact@v3
+      - name: Upload thesis PDFs
+        uses: actions/upload-artifact@v4
         with:
-          name: thesis-pdf
-          path: thesis.pdf
+          name: thesis-pdfs
+          path: |
+            thesis_eng.pdf
+            thesis_ger.pdf
 
       - name: Create Overleaf ZIP
         run: |
@@ -29,7 +31,7 @@ jobs:
           ./scripts/make_overleaf_zip.sh
 
       - name: Upload Overleaf ZIP
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: overleaf-zip
           path: overleaf.zip

@@ -2,14 +2,14 @@
 PDF_EN = thesis_eng.pdf
 PDF_DE = thesis_ger.pdf
 
-# Use full paths to TeX binaries (macOS MacTeX location)
-PDFLATEX = /Library/TeX/texbin/pdflatex
-BIBER = /Library/TeX/texbin/biber
-LATEXMK = /Library/TeX/texbin/latexmk
+# Override these from the environment if your TeX binaries are not on PATH.
+PDFLATEX ?= pdflatex
+BIBER ?= biber
+LATEXMK ?= latexmk
 
 .PHONY: build build-en build-de build-all clean distclean zip
 
-# Default: build English wrapper (keeps backward compatibility with CI/scripts)
+# Default: build the English student wrapper.
 build: build-en
 
 build-en:
