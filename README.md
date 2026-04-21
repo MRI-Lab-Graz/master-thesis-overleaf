@@ -4,6 +4,10 @@ This repository is designed around one student workflow: upload the prepared Ove
 
 Students should use the release asset `overleaf.zip`, not the raw repository checkout.
 
+`overleaf.zip` is intentionally not kept in the repository file tree (`Code` tab). Download it from the latest release:
+
+https://github.com/MRI-Lab-Graz/master-thesis-overleaf/releases/latest
+
 ## For Students
 
 Use exactly one main file:
@@ -25,6 +29,7 @@ Ignore these locations:
 ## Quick Start
 
 1. Download `overleaf.zip` from the GitHub Release assets.
+	- Direct link: https://github.com/MRI-Lab-Graz/master-thesis-overleaf/releases/latest
 2. In Overleaf, create a new project by uploading that zip.
 3. Open `thesis_eng.tex` or `thesis_ger.tex`.
 4. Replace the `% (CHANGE ME)` fields at the top.
@@ -68,6 +73,7 @@ GitHub Actions builds both public thesis entry points.
 - Push and pull request runs upload temporary workflow artifacts.
 - Published GitHub Releases receive permanent assets: `overleaf.zip`, `overleaf.zip.sha256`, `thesis_eng.pdf`, and `thesis_ger.pdf`.
 - The release-assets workflow can also be run manually for a tag, but existing release assets are intentionally not overwritten.
+- To publish a fresh student ZIP after template changes, create and publish a new release tag.
 
 Optional integrity check for advanced users:
 
