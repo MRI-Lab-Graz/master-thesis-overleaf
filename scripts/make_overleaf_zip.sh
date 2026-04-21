@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# Create an Overleaf-ready zip containing only the files students need
+# Create the student ZIP containing only the files students need.
 set -euo pipefail
 
 ROOT_DIR=$(cd "$(dirname "$0")/.." && pwd)
-OUT="$ROOT_DIR/overleaf.zip"
+OUT="$ROOT_DIR/thesis_template.zip"
 
 # Explicit allowlist prevents accidental leakage from local stray files.
 PUBLIC_FILES=(
@@ -25,7 +25,7 @@ for file in "${PUBLIC_FILES[@]}"; do
   fi
 done
 
-STAGE_DIR=$(mktemp -d "${TMPDIR:-/tmp}/overleaf-zip.XXXXXX")
+STAGE_DIR=$(mktemp -d "${TMPDIR:-/tmp}/thesis-template-zip.XXXXXX")
 cleanup() {
   rm -rf "$STAGE_DIR"
 }

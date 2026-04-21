@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# Verify overleaf.zip contains exactly the public student files.
+# Verify thesis_template.zip contains exactly the public student files.
 set -euo pipefail
 
 ROOT_DIR=$(cd "$(dirname "$0")/.." && pwd)
-ZIP_PATH="${1:-$ROOT_DIR/overleaf.zip}"
+ZIP_PATH="${1:-$ROOT_DIR/thesis_template.zip}"
 
 if [[ ! -f "$ZIP_PATH" ]]; then
   echo "ZIP file not found: $ZIP_PATH" >&2

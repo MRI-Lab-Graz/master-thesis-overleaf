@@ -28,18 +28,14 @@ jobs:
             thesis_eng.tex
             thesis_ger.tex
 
-      - name: Create Overleaf ZIP
+      - name: Create Thesis Template ZIP
         run: |
           chmod +x ./scripts/make_overleaf_zip.sh
           ./scripts/make_overleaf_zip.sh
 
-      - name: Verify Overleaf ZIP contents
+      - name: Verify Thesis Template ZIP contents
         run: |
           bash ./scripts/verify_overleaf_zip.sh
-
-      - name: Create Overleaf ZIP checksum
-        run: |
-          shasum -a 256 overleaf.zip > overleaf.zip.sha256
 
       - name: Upload workflow artifacts
         uses: actions/upload-artifact@v4
@@ -48,8 +44,7 @@ jobs:
           path: |
             thesis_eng.pdf
             thesis_ger.pdf
-            overleaf.zip
-            overleaf.zip.sha256
+            thesis_template.zip
 
       - name: Attach assets to GitHub release
         if: github.event_name == 'release' || github.event_name == 'workflow_dispatch'
@@ -59,6 +54,5 @@ jobs:
           files: |
             thesis_eng.pdf
             thesis_ger.pdf
-            overleaf.zip
-            overleaf.zip.sha256
+            thesis_template.zip
           overwrite_files: false

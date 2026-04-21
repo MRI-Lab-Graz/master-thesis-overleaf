@@ -2,7 +2,7 @@ START HERE — Quick start for Word users (one page)
 
 1) Open Overleaf: https://www.overleaf.com and create a new project.
 
-2) Upload the prepared `overleaf.zip` from GitHub Releases. Only upload the full repository if you are maintaining the template itself.
+2) Upload the prepared `thesis_template.zip` from GitHub Releases. Only upload the full repository if you are maintaining the template itself.
 
 3) Open **one** file: `thesis_eng.tex` (English) **or** `thesis_ger.tex` (German).
 

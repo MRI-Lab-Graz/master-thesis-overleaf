@@ -27,23 +27,17 @@ jobs:
             thesis_eng.pdf
             thesis_ger.pdf
 
-      - name: Create Overleaf ZIP
+      - name: Create Thesis Template ZIP
         run: |
           chmod +x ./scripts/make_overleaf_zip.sh
           ./scripts/make_overleaf_zip.sh
 
-      - name: Verify Overleaf ZIP contents
+      - name: Verify Thesis Template ZIP contents
         run: |
           bash ./scripts/verify_overleaf_zip.sh
 
-      - name: Create Overleaf ZIP checksum
-        run: |
-          shasum -a 256 overleaf.zip > overleaf.zip.sha256
-
-      - name: Upload Overleaf ZIP
+      - name: Upload Thesis Template ZIP
         uses: actions/upload-artifact@v4
         with:
-          name: overleaf-zip
-          path: |
-            overleaf.zip
-            overleaf.zip.sha256
+          name: thesis-template-zip
+          path: thesis_template.zip

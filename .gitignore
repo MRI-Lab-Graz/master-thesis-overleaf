@@ -23,6 +23,7 @@
 # Build / distribution outputs
 *.pdf
 *.xdv
+thesis_template.zip
 overleaf.zip
 
 # Editor / OS temporary files

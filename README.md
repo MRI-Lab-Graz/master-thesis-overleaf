@@ -2,9 +2,9 @@
 
 This repository is designed around one student workflow: upload the prepared Overleaf package, open one file, and start writing.
 
-Students should use the release asset `overleaf.zip`, not the raw repository checkout.
+Students should use the release asset `thesis_template.zip`, not the raw repository checkout.
 
-`overleaf.zip` is intentionally not kept in the repository file tree (`Code` tab). Download it from the latest release:
+`thesis_template.zip` is intentionally not kept in the repository file tree (`Code` tab). Download it from the latest release:
 
 https://github.com/MRI-Lab-Graz/master-thesis-overleaf/releases/latest
 
@@ -28,7 +28,7 @@ Ignore these locations:
 
 ## Quick Start
 
-1. Download `overleaf.zip` from the GitHub Release assets.
+1. Download `thesis_template.zip` from the GitHub Release assets.
 	- Direct link: https://github.com/MRI-Lab-Graz/master-thesis-overleaf/releases/latest
 2. In Overleaf, create a new project by uploading that zip.
 3. Open `thesis_eng.tex` or `thesis_ger.tex`.
@@ -65,22 +65,15 @@ Local validation requires TeX Live or MacTeX with `pdflatex`, `biber`, `latexmk`
 - `make build-de` builds the German thesis PDF.
 - `make build-all` builds both thesis PDFs.
 - `make clean` removes auxiliary files.
-- `make zip` creates `overleaf.zip`.
-- `make zip-check` creates `overleaf.zip` and verifies that it contains only the public student files.
+- `make zip` creates `thesis_template.zip`.
+- `make zip-check` creates `thesis_template.zip` and verifies that it contains only the public student files.
 
 GitHub Actions builds both public thesis entry points.
 
 - Push and pull request runs upload temporary workflow artifacts.
-- Published GitHub Releases receive permanent assets: `overleaf.zip`, `overleaf.zip.sha256`, `thesis_eng.pdf`, and `thesis_ger.pdf`.
+- Published GitHub Releases receive permanent assets: `thesis_template.zip`, `thesis_eng.pdf`, and `thesis_ger.pdf`.
 - The release-assets workflow can also be run manually for a tag, but existing release assets are intentionally not overwritten.
 - To publish a fresh student ZIP after template changes, create and publish a new release tag.
-
-Optional integrity check for advanced users:
-
-```bash
-shasum -a 256 overleaf.zip
-# Compare with the value in overleaf.zip.sha256 from the same release.
-```
 
 ## License
 

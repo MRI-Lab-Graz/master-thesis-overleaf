@@ -2,6 +2,17 @@
 
 All notable changes to this repository will be documented in this file.
 
+## v1.2.5 - 2026-04-21
+
+- Student release asset simplification:
+  - Renamed the public student package from `overleaf.zip` to `thesis_template.zip`.
+  - Removed checksum sidecar publication from CI/release assets to keep student downloads focused on a single ZIP.
+- Workflow and tooling updates:
+  - Updated ZIP build and verification scripts to use `thesis_template.zip` as the default artifact.
+  - Updated CI and release workflows to upload/attach only `thesis_template.zip` (plus thesis PDFs).
+- Documentation updates:
+  - Updated README and developer guides to reference `thesis_template.zip` consistently.
+
 ## v1.2.4 - 2026-04-21
 
 - Overleaf ZIP integrity hardening:

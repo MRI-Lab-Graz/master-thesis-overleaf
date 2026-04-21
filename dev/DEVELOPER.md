@@ -24,17 +24,17 @@ make build-all
 
 ```bash
 make zip
-# creates overleaf.zip
+# creates thesis_template.zip
 ```
 
-4. Upload `overleaf.zip` to Overleaf (Upload Project) to confirm the package compiles in Overleaf as-is.
+4. Upload `thesis_template.zip` to Overleaf (Upload Project) to confirm the package compiles in Overleaf as-is.
 
 CI/Repository
 -------------
 - The GitHub Actions workflow compiles both public thesis entry points: `thesis_eng.tex` and `thesis_ger.tex`.
-- Push and pull request runs upload both generated PDFs and `overleaf.zip` as workflow artifacts.
-- Published GitHub Releases receive `overleaf.zip`, `thesis_eng.pdf`, and `thesis_ger.pdf` as release assets.
-- The release-assets workflow also supports manual runs for an existing tag when you need to backfill or replace release assets.
+- Push and pull request runs upload both generated PDFs and `thesis_template.zip` as workflow artifacts.
+- Published GitHub Releases receive `thesis_template.zip`, `thesis_eng.pdf`, and `thesis_ger.pdf` as release assets.
+- The release-assets workflow also supports manual runs for an existing tag when needed, but existing assets are not overwritten.
 
 Troubleshooting
 ---------------
