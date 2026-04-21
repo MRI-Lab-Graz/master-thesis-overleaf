@@ -7,7 +7,7 @@ PDFLATEX ?= pdflatex
 BIBER ?= biber
 LATEXMK ?= latexmk
 
-.PHONY: build build-en build-de build-all clean distclean zip
+.PHONY: build build-en build-de build-all clean distclean zip zip-check
 
 # Default: build the English student wrapper.
 build: build-en
@@ -38,3 +38,6 @@ distclean:
 
 zip:
 	./scripts/make_overleaf_zip.sh
+
+zip-check: zip
+	bash ./scripts/verify_overleaf_zip.sh

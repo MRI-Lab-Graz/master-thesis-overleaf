@@ -32,8 +32,18 @@ jobs:
           chmod +x ./scripts/make_overleaf_zip.sh
           ./scripts/make_overleaf_zip.sh
 
+      - name: Verify Overleaf ZIP contents
+        run: |
+          bash ./scripts/verify_overleaf_zip.sh
+
+      - name: Create Overleaf ZIP checksum
+        run: |
+          shasum -a 256 overleaf.zip > overleaf.zip.sha256
+
       - name: Upload Overleaf ZIP
         uses: actions/upload-artifact@v4
         with:
           name: overleaf-zip
-          path: overleaf.zip
+          path: |
+            overleaf.zip
+            overleaf.zip.sha256

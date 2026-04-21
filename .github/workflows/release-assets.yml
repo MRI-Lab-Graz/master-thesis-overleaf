@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       tag_name:
-        description: Existing release tag to build and attach assets to
+        description: Release tag to publish assets for (existing assets are not overwritten)
         required: true
         type: string
 
@@ -33,6 +33,14 @@ jobs:
           chmod +x ./scripts/make_overleaf_zip.sh
           ./scripts/make_overleaf_zip.sh
 
+      - name: Verify Overleaf ZIP contents
+        run: |
+          bash ./scripts/verify_overleaf_zip.sh
+
+      - name: Create Overleaf ZIP checksum
+        run: |
+          shasum -a 256 overleaf.zip > overleaf.zip.sha256
+
       - name: Upload workflow artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -41,6 +49,7 @@ jobs:
             thesis_eng.pdf
             thesis_ger.pdf
             overleaf.zip
+            overleaf.zip.sha256
 
       - name: Attach assets to GitHub release
         if: github.event_name == 'release' || github.event_name == 'workflow_dispatch'
@@ -51,4 +60,5 @@ jobs:
             thesis_eng.pdf
             thesis_ger.pdf
             overleaf.zip
-          overwrite_files: true
+            overleaf.zip.sha256
+          overwrite_files: false

@@ -61,12 +61,20 @@ Local validation requires TeX Live or MacTeX with `pdflatex`, `biber`, `latexmk`
 - `make build-all` builds both thesis PDFs.
 - `make clean` removes auxiliary files.
 - `make zip` creates `overleaf.zip`.
+- `make zip-check` creates `overleaf.zip` and verifies that it contains only the public student files.
 
 GitHub Actions builds both public thesis entry points.
 
 - Push and pull request runs upload temporary workflow artifacts.
-- Published GitHub Releases receive permanent assets: `overleaf.zip`, `thesis_eng.pdf`, and `thesis_ger.pdf`.
-- The release-assets workflow can also be run manually for an existing tag if you need to repair or replace release assets.
+- Published GitHub Releases receive permanent assets: `overleaf.zip`, `overleaf.zip.sha256`, `thesis_eng.pdf`, and `thesis_ger.pdf`.
+- The release-assets workflow can also be run manually for a tag, but existing release assets are intentionally not overwritten.
+
+Optional integrity check for advanced users:
+
+```bash
+shasum -a 256 overleaf.zip
+# Compare with the value in overleaf.zip.sha256 from the same release.
+```
 
 ## License
 
