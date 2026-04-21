@@ -2,6 +2,20 @@
 
 All notable changes to this repository will be documented in this file.
 
+## v1.2.4 - 2026-04-21
+
+- Overleaf ZIP integrity hardening:
+  - Reworked ZIP generation to use an explicit allowlist of student-facing files.
+  - Added `scripts/verify_overleaf_zip.sh` to validate exact archive contents and reject unsafe paths.
+  - Added `make zip-check` for one-command ZIP build + integrity verification.
+- Release and CI asset integrity:
+  - Added automated `overleaf.zip` checksum generation (`overleaf.zip.sha256`) in CI and release workflows.
+  - Added ZIP verification step in CI/release workflows before uploading assets.
+  - Configured release uploads to avoid overwriting existing assets for immutable published releases.
+- Documentation updates:
+  - Clarified that `overleaf.zip` is a release asset (not kept in the repository file tree).
+  - Added direct link guidance to the latest releases page and checksum verification instructions.
+
 ## v1.2.3 - 2026-04-17
 
 - Release automation:
