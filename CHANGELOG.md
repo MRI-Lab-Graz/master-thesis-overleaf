@@ -2,6 +2,14 @@
 
 All notable changes to this repository will be documented in this file.
 
+## v1.2.6 - 2026-11-23
+
+- APA citation fixes:
+  - Example text now uses `\parencite` / `\textcite` instead of `\cite`, so citations render with APA parentheses.
+  - README and START_HERE updated to teach `\parencite` / `\textcite`.
+- Removed the manual `\section*{References}` / `\section*{Literaturverzeichnis}` heading that duplicated the heading printed by `\printbibliography`.
+- Removed unused, corrupted `template/apa_template_settings.tex`.
+
 ## v1.2.5 - 2026-04-21
 
 - Student release asset simplification:

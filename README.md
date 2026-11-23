@@ -38,7 +38,7 @@ Ignore these locations:
 ## Daily Use
 
 - Write by replacing the example sections with your own text.
-- Add citations to `bibliography.bib` and cite with `\cite{Key}`.
+- Add citations to `bibliography.bib` and cite with `\parencite{Key}` → (Author, 2021) or `\textcite{Key}` → Author (2021).
 - Upload images to `figures/` and include them with `\includegraphics{figures/your-file.ext}`.
 - Recompile once after text changes and twice after bibliography changes.
 

@@ -19,7 +19,7 @@ START HERE — Quick start for Word users (one page)
 
 7) Add references:
    - Edit `bibliography.bib` (or upload your own `.bib`).
-   - Cite with `\cite{key}` (the key is the entry name in the `.bib` file).
+   - Cite with `\parencite{key}` → (Author, 2021) or `\textcite{key}` → Author (2021) (the key is the entry name in the `.bib` file).
 
 8) Compile: Click Recompile in Overleaf. If references don't show, set **Menu → Settings → Compiler** to "LaTeX (pdfLaTeX) + Biber" and recompile twice.
 
@@ -41,7 +41,7 @@ Quick checklist for absolute beginners (do these five things first):
 2. Click Recompile — check the PDF opens and the title page updates.
 3. Replace one paragraph in the Introduction with your words; recompile to confirm.
 4. Upload one image to `figures/` and add it with `\includegraphics{figures/yourfile.ext}`; recompile to confirm it appears.
-5. Add one reference to `bibliography.bib`, cite it in the intro with `\cite{...}` and set compiler to "LaTeX (pdfLaTeX) + Biber" if the citation doesn't show.
+5. Add one reference to `bibliography.bib`, cite it in the intro with `\parencite{...}` and set compiler to "LaTeX (pdfLaTeX) + Biber" if the citation doesn't show.
 
 That's it — progress in small, verifiable steps. If an error appears, copy the Overleaf log and search for the top error line; it usually indicates what's wrong.
 
